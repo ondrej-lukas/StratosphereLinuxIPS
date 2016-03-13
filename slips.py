@@ -121,7 +121,8 @@ class Tuple(object):
         if self.verbose > 2:
             print '\nAdding flow {}'.format(column_values)
         # Get the starttime
-        self.datetime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
+        #self.datetime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
+        self.datetime = datetime.strptime(column_values[0], '%Y-%m-%d %H:%M:%S.%f')
         # Get the size
         try:
             self.current_size = float(column_values[12])
@@ -441,7 +442,8 @@ class Processor(multiprocessing.Process):
             for id in ids_to_delete:
                 del self.tuples[id]
             # Move the time slot
-            self.slot_starttime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
+            #self.slot_starttime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
+            self.slot_starttime = datetime.strptime(column_values[0], '%Y-%m-%d %H:%M:%S.%f')
             self.slot_endtime = self.slot_starttime + self.slot_width
 
             # Put the last flow received in the next slot, because it overcommed the threshold and it was not processed
@@ -506,6 +508,71 @@ class Processor(multiprocessing.Process):
             print inst           # __str__ allows args to printed directly
             sys.exit(1)
 
+    def convert(self, values):
+        """ Convert from the other format to binetflow """
+        # other format
+            #0:client, 1:ip_local, 2:ip_remote, 3:port_local, 4:port_remote, 5:proto, 6:start_in, 7:start_out, 8:stop_in, 9:stop_out, 10:size_in, 11:size_out, 12:count_in, 13:count_out, 14:seen_start_in, 15:seen_start_out, 16:tag
+        # binetflow format
+            #0:starttime, 1:dur, 2:proto, 3:saddr, 4:sport, 5:dir, 6:daddr: 7:dport, 8:state, 9:stos,  10:dtos, 11:pkts, 12:bytes
+        column_values = [False,False,False,False,False,False,False,False,False,False,False,False,False]
+        # bytes
+        # We first do the bytes so we can detect when the field is empty
+        try:
+            column_values[12] = int(values[12].strip()) + int(values[13].strip())
+        except ValueError:
+            # the first line was the headers, get another
+            return False
+        #  starttime
+        try:
+            temp_start_in = datetime.strptime(values[6].strip(), '%Y-%m-%d %H:%M:%S.%f')
+        except ValueError:
+            # There is no data             
+            temp_start_in = float("inf")   
+        try:
+            temp_start_out = datetime.strptime(values[7].strip(), '%Y-%m-%d %H:%M:%S.%f')
+        except ValueError:
+            # There is no data             
+            temp_start_out = float("inf")  
+        # Which one did started first?    
+        column_values[0] = values[6].strip() if temp_start_in < temp_start_out else values[7].strip()
+        first_flow_time = temp_start_in if temp_start_in < temp_start_out else temp_start_out
+        
+        # Duration (first end time)
+        try:
+            temp_stop_in = datetime.strptime(values[8].strip(), '%Y-%m-%d %H:%M:%S.%f')
+        except ValueError:
+            # There is no data             
+            temp_stop_in = float("-inf")   
+        try:
+            temp_stop_out = datetime.strptime(values[9].strip(), '%Y-%m-%d %H:%M:%S.%f')
+        except ValueError:
+            # There is no data             
+            temp_stop_out = float("-inf")  
+        # Which one did stop first?    
+        last_flow_time = temp_stop_in if temp_stop_in > temp_stop_out else temp_stop_out
+        # Finally the duration         
+        diff = last_flow_time - first_flow_time
+        column_values[1] = diff.total_seconds()
+        # proto
+        column_values[2] = values[5].strip()
+        # saddr
+        column_values[3] = values[1].strip()
+        # sport
+        column_values[4] = values[3].strip()
+        # daddr
+        column_values[6] = values[2].strip()
+        # dport
+        column_values[7] = values[4].strip()
+        # state
+        column_values[8] = ""
+        # stos
+        column_values[9] = 0
+        # dtos
+        column_values[10] = 0
+        # pkts (no amount of pkts info int he other dataset
+        column_values[11] = -1
+        return column_values
+
     def run(self):
         try:
             while True:
@@ -513,18 +580,23 @@ class Processor(multiprocessing.Process):
                     line = self.queue.get()
                     if 'stop' != line:
                         # Process this flow
-                        nline = ','.join(line.strip().split(',')[:13])
+                        #nline = ','.join(line.strip().split(',')[:13])
+                        nline = ','.join(line.strip().split(',')[:17])
                         try:
-                            column_values = nline.split(',')
-                            # 0:starttime, 1:dur, 2:proto, 3:saddr, 4:sport, 5:dir, 6:daddr: 7:dport, 8:state, 9:stos,  10:dtos, 11:pkts, 12:bytes
+                            #column_values = nline.split(',')
+                            column_values = self.convert(nline.split(','))
+                            if not column_values:
+                                continue
                             if self.slot_starttime == -1:
                                 # First flow
                                 try:
-                                    self.slot_starttime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
+                                    #self.slot_starttime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
+                                    self.slot_starttime = datetime.strptime(column_values[0], '%Y-%m-%d %H:%M:%S.%f')
                                 except ValueError:
                                     continue
                                 self.slot_endtime = self.slot_starttime + self.slot_width
-                            flowtime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
+                            #flowtime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
+                            flowtime = datetime.strptime(column_values[0], '%Y-%m-%d %H:%M:%S.%f')
                             if flowtime >= self.slot_starttime and flowtime < self.slot_endtime:
                                 # Inside the slot
                                 tuple4 = column_values[3]+'-'+column_values[6]+'-'+column_values[7]+'-'+column_values[2]
@@ -553,6 +625,7 @@ class Processor(multiprocessing.Process):
                         except UnboundLocalError:
                             print 'Probable empty file.'
                     else:
+                        # Empty queue
                         try:
                             # Process the last flows in the last time slot
                             self.process_out_of_time_slot(column_values)
