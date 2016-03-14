@@ -510,68 +510,93 @@ class Processor(multiprocessing.Process):
 
     def convert(self, values):
         """ Convert from the other format to binetflow """
-        # other format
-            #0:client, 1:ip_local, 2:ip_remote, 3:port_local, 4:port_remote, 5:proto, 6:start_in, 7:start_out, 8:stop_in, 9:stop_out, 10:size_in, 11:size_out, 12:count_in, 13:count_out, 14:seen_start_in, 15:seen_start_out, 16:tag
-        # binetflow format
-            #0:starttime, 1:dur, 2:proto, 3:saddr, 4:sport, 5:dir, 6:daddr: 7:dport, 8:state, 9:stos,  10:dtos, 11:pkts, 12:bytes
-        column_values = [False,False,False,False,False,False,False,False,False,False,False,False,False]
-        # bytes
-        # We first do the bytes so we can detect when the field is empty
         try:
-            column_values[12] = int(values[12].strip()) + int(values[13].strip())
-        except ValueError:
-            # the first line was the headers, get another
-            return False
-        #  starttime
-        try:
-            temp_start_in = datetime.strptime(values[6].strip(), '%Y-%m-%d %H:%M:%S.%f')
-        except ValueError:
-            # There is no data             
-            temp_start_in = float("inf")   
-        try:
-            temp_start_out = datetime.strptime(values[7].strip(), '%Y-%m-%d %H:%M:%S.%f')
-        except ValueError:
-            # There is no data             
-            temp_start_out = float("inf")  
-        # Which one did started first?    
-        column_values[0] = values[6].strip() if temp_start_in < temp_start_out else values[7].strip()
-        first_flow_time = temp_start_in if temp_start_in < temp_start_out else temp_start_out
-        
-        # Duration (first end time)
-        try:
-            temp_stop_in = datetime.strptime(values[8].strip(), '%Y-%m-%d %H:%M:%S.%f')
-        except ValueError:
-            # There is no data             
-            temp_stop_in = float("-inf")   
-        try:
-            temp_stop_out = datetime.strptime(values[9].strip(), '%Y-%m-%d %H:%M:%S.%f')
-        except ValueError:
-            # There is no data             
-            temp_stop_out = float("-inf")  
-        # Which one did stop first?    
-        last_flow_time = temp_stop_in if temp_stop_in > temp_stop_out else temp_stop_out
-        # Finally the duration         
-        diff = last_flow_time - first_flow_time
-        column_values[1] = diff.total_seconds()
-        # proto
-        column_values[2] = values[5].strip()
-        # saddr
-        column_values[3] = values[1].strip()
-        # sport
-        column_values[4] = values[3].strip()
-        # daddr
-        column_values[6] = values[2].strip()
-        # dport
-        column_values[7] = values[4].strip()
-        # state
-        column_values[8] = ""
-        # stos
-        column_values[9] = 0
-        # dtos
-        column_values[10] = 0
-        # pkts (no amount of pkts info int he other dataset
-        column_values[11] = -1
-        return column_values
+            # other format
+                #0:client, 1:ip_local, 2:ip_remote, 3:port_local, 4:port_remote, 5:proto, 6:start_in, 7:start_out, 8:stop_in, 9:stop_out, 10:size_in, 11:size_out, 12:count_in, 13:count_out, 14:seen_start_in, 15:seen_start_out, 16:tag
+            # binetflow format
+                #0:starttime, 1:dur, 2:proto, 3:saddr, 4:sport, 5:dir, 6:daddr: 7:dport, 8:state, 9:stos,  10:dtos, 11:pkts, 12:bytes
+            #print 'Original line: {}'.format(values)
+            column_values = [False,False,False,False,False,False,False,False,False,False,False,False,False]
+            #######
+            # bytes
+            # We first do the bytes so we can detect when the field is empty and therefore we are looking at the header line
+            try:
+                column_values[12] = int(values[10].strip()) + int(values[11].strip())
+            except ValueError:
+                # the first line was the headers, get another
+                return False
+            #######
+            # starttime of the flow (choose between the start time of the in and of the out)
+            try:
+                temp_start_in = datetime.strptime(values[6].strip(), '%Y-%m-%d %H:%M:%S.%f')
+            except ValueError:
+                # There is no data             
+                temp_start_in = datetime.fromtimestamp(2100000000) # Some date in the future future
+            try:
+                temp_start_out = datetime.strptime(values[7].strip(), '%Y-%m-%d %H:%M:%S.%f')
+            except ValueError:
+                # There is no data             
+                temp_start_out = datetime.fromtimestamp(2100000000) # Some date in the future future
+            # Which one did started first?    
+            column_values[0] = values[6].strip() if temp_start_in < temp_start_out else values[7].strip()
+            first_flow_time = temp_start_in if temp_start_in < temp_start_out else temp_start_out
+            #######
+            # Duration (first ending time)
+            try:
+                temp_stop_in = datetime.strptime(values[8].strip(), '%Y-%m-%d %H:%M:%S.%f')
+            except ValueError:
+                # There is no data             
+                temp_stop_in = datetime.fromtimestamp(0)
+            try:
+                temp_stop_out = datetime.strptime(values[9].strip(), '%Y-%m-%d %H:%M:%S.%f')
+            except ValueError:
+                # There is no data             
+                temp_stop_out = datetime.fromtimestamp(0)
+            # Which one did stop first?    
+            last_flow_time = temp_stop_in if temp_stop_in > temp_stop_out else temp_stop_out
+            # Finally the duration         
+            diff = last_flow_time - first_flow_time
+            column_values[1] = diff.total_seconds()
+            #######
+            # Proto
+            if 't' in values[5].strip().lower():
+                column_values[2] = 'tcp'
+            elif 'u' in values[5].strip().lower():
+                column_values[2] = 'udp'
+            elif 'i' in values[5].strip().lower():
+                column_values[2] = 'icmp'
+            elif 'a' in values[5].strip().lower():
+                column_values[2] = 'arp'
+            else:
+                column_values[2] = 'other'
+            #######
+            # saddr
+            column_values[3] = values[1].strip()
+            #######
+            # sport
+            column_values[4] = values[3].strip()
+            #######
+            # daddr
+            column_values[6] = values[2].strip()
+            #######
+            # dport
+            column_values[7] = values[4].strip()
+            #######
+            # state
+            column_values[8] = ""
+            #######
+            # stos
+            column_values[9] = 0
+            #######
+            # dtos
+            column_values[10] = 0
+            #######
+            # pkts 
+            column_values[11] = int(values[12].strip()) + int(values[13].strip())
+            return column_values
+        except Exception as err:
+            print err
+            print type(err)
 
     def run(self):
         try:
@@ -588,14 +613,8 @@ class Processor(multiprocessing.Process):
                             if not column_values:
                                 continue
                             if self.slot_starttime == -1:
-                                # First flow
-                                try:
-                                    #self.slot_starttime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
-                                    self.slot_starttime = datetime.strptime(column_values[0], '%Y-%m-%d %H:%M:%S.%f')
-                                except ValueError:
-                                    continue
+                                self.slot_starttime = datetime.strptime(column_values[0], '%Y-%m-%d %H:%M:%S.%f')
                                 self.slot_endtime = self.slot_starttime + self.slot_width
-                            #flowtime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
                             flowtime = datetime.strptime(column_values[0], '%Y-%m-%d %H:%M:%S.%f')
                             if flowtime >= self.slot_starttime and flowtime < self.slot_endtime:
                                 # Inside the slot
