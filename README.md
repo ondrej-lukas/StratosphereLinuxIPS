@@ -12,7 +12,7 @@ The idea of slips is to focus on the machine learning part of the detection and 
 The basic architecture is to read the flows from an Argus instance using the __ra__ tool and to send the flows to slips as standard input. This way of working is very good because we can analyze the traffic of our own computer, and also we can analyze the traffic of a remote network or any other computer where an Argus instance is running. Actually if you run the Argus program in any Windows, Mac or router, slips can analyze the traffic.
 
 
-##Dependencies for RandomForest/SPRT version
+## Dependencies for RandomForest/SPRT version
 
 - numpy
 - scipy
