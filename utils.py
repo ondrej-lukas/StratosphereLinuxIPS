@@ -1,4 +1,4 @@
-#!/usr/bin/python -u
+#!/usr/bin/python
 # This file is part of the Stratosphere Linux IPS
 # See the file 'LICENSE' for copying permission.
 #Author: Ondrej Lukas - ondrej.lukas95@gmail.com, lukasond@fel.cvut.cz
@@ -7,6 +7,20 @@ import signal
 import re
 import time
 import sys
+import pickle
+from math import log
+from sklearn.ensemble import RandomForestClassifier
+
+
+def timing(f):
+    """ Function to measure the time another function takes."""
+    def wrap(*args):
+        time1 = time.time()
+        ret = f(*args)
+        time2 = time.time()
+        print '%s function took %0.3f ms' % (f.func_name, (time2-time1)*1000.0)
+        return ret
+    return wrap
 
 class SignalHandler(object):
     """Used for asynchronous control of the program -e.g. premature interrupting with CTRL+C """
@@ -61,6 +75,7 @@ class WhoisHandler(object):
             return False
         # is the ip in the cache
         try:
+            desc = ""
             desc = self.whois_data[ip]
             return desc
         except KeyError:
@@ -113,6 +128,30 @@ class WhoisHandler(object):
         else:
             print "No new stuff in the dictionary"
 
+class Classifier(object):
+
+    def __init__(self, filename):
+        self.rf = None
+        try:
+            with open(filename, 'r') as f:
+                self.rf = pickle.load(f)
+                print "Classifier '{}' loaded successfully".format(filename)
+        except IOError:
+            print "ERROR: Loading serialzied RandomForestClassifier from '{}' was NOT successful.".format(filename)
+            exit(1)
+
+    def get_log_likelihood(self, vector_list):
+
+        likelihoods = []
+        results = self.rf.predict_proba(vector_list)
+        for result in results:
+            if result[0] == 0:
+                likelihoods.append(log(sys.float_info.min))
+            elif result[1] == 0:
+                likelihoods.append(log(sys.float_info.max))
+            else:
+                likelihoods.append( log((result[0]/result[1]))) # possible zero division?
+        return likelihoods
 
 
 

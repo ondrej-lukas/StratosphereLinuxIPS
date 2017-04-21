@@ -370,7 +370,7 @@ class Tuple(object):
 # Process
 class Processor(multiprocessing.Process):
     """ A class process to run the process of the flows """
-    def __init__(self, queue, slot_width, get_whois, verbose, amount, dontdetect, threshold, debug, whitelist, sdw_width):
+    def __init__(self, queue, slot_width, get_whois, verbose, amount, dontdetect, threshold, debug, whitelist, classifier):
         multiprocessing.Process.__init__(self)
         self.get_whois = get_whois
         self.verbose = verbose
@@ -384,13 +384,11 @@ class Processor(multiprocessing.Process):
         self.slot_endtime = -1
         self.slot_width = slot_width
         self.dontdetect = dontdetect
-        self.ip_handler = IpHandler(self.verbose, self.debug,self.get_whois)
+        self.ip_handler = IpHandler(self.verbose, self.debug,self.get_whois, classifier)
         self.detection_threshold = threshold;
         # Used to keep track in which time window we are currently in (also total amount of tw)
         self.tw_index = 0
         self.ip_whitelist = whitelist
-        #CHANGE THIS
-        self.sdw_width = sdw_width
 
     def get_tuple(self, tuple4):
         """ Get the values and return the correct tuple for them """
@@ -431,8 +429,8 @@ class Processor(multiprocessing.Process):
                     if tuple.should_be_printed:
                         tuple.dont_print()
                 """
-            # Print all the addresses in this time window
-            self.ip_handler.print_addresses(self.slot_starttime, self.slot_endtime, self.tw_index, self.detection_threshold, self.sdw_width, False)
+            # Process all the addresses in this time window
+            self.ip_handler.process_timewindow(self.slot_starttime, self.slot_endtime, self.detection_threshold)
             # Add 1 to the time window index 
             self.tw_index +=1
             """
@@ -451,8 +449,6 @@ class Processor(multiprocessing.Process):
             # Move the time window times
             self.slot_starttime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
             self.slot_endtime = self.slot_starttime + self.slot_width
-            #Clear previous TW in ip_handler
-            self.ip_handler.close_time_window()
 
             # If not the last TW. Put the last flow received in the next slot, because it overcome the threshold and it was not processed
             if not last_tw:
@@ -601,7 +597,7 @@ class Processor(multiprocessing.Process):
 ####################
 if __name__ == '__main__':  
     print 'Stratosphere Linux IPS. Version {}'.format(version)
-    print('https://stratosphereips.org')
+    print('https://stratosphereips.org\n')
 
     # Parse the parameters
     parser = argparse.ArgumentParser()
@@ -614,8 +610,8 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--folder', help='Folder with models to apply for detection.', action='store', required=False)
     parser.add_argument('-s', '--sound', help='Play a small sound when a periodic connections is found.', action='store_true', default=False, required=False)
     parser.add_argument('-t', '--threshold', help='Threshold for detection with IPHandler', action='store', default=0.002, required=False, type=float)
-    parser.add_argument('-S', '--sdw_width', help='Width of sliding window. The unit is in \time windows\'. So a -S 10 and a -w 5, means a sliding window of 50 minutes.', action='store', default=10, required=False, type=int)
-    parser.add_argument('-W','--whitelist',help="File with the IP addresses to whitelist. One per line.",action='store',required=False)
+    parser.add_argument('-W', '--whitelist', help="File with the IP addresses to whitelist. One per line.", action='store', required=False)
+    parser.add_argument('-c', '--classifier', help="File where serialized classifier.", action='store',required=False, default="rf_classifier.pickle", type=str)
 
     args = parser.parse_args()
 
@@ -671,7 +667,7 @@ if __name__ == '__main__':
 
 
     # Create the thread and start it
-    processorThread = Processor(queue, timedelta(minutes=args.width), args.datawhois, args.verbose, args.amount, args.dontdetect, args.threshold, args.debug, whitelist, args.sdw_width)
+    processorThread = Processor(queue, timedelta(minutes=args.width), args.datawhois, args.verbose, args.amount, args.dontdetect, args.threshold, args.debug, whitelist,args.classifier)
     SH = SignalHandler(processorThread)
     SH.register_signal(signal.SIGINT)
     processorThread.start()
