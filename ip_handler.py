@@ -239,29 +239,15 @@ class IpAddress(object):
                             print "\t\t{} [{}] ({}/{})".format(tuple4,whois,tuple_result[0],tuple_result[1])
                         else:
                             print "\t\t{} ({}/{})".format(tuple4,tuple_result[0],tuple_result[1])
-                        if verbose > 2:
-                            for detection in self.tuples[tuple4]:
-                                #check if detection fits in the TW
-                                if (detection[2] >= start_time and detection[2] < end_time):
-                                    print("\t\t\tDstIP: {}, Label:{:>40} , Detection Time:{}, State(100 max): {}").format(detection[3], detection[0], detection[2], detection[4][:100])
+
+                        #print detections
+                        for detection in self.tuples[tuple4]:
+                            #check if detection fits in the TW
+                            if (detection[2] >= start_time and detection[2] < end_time):
+                                print("\t\t\tDstIP: {}, Label:{:>40} , Detection Time:{}, State(100 max): {}").format(detection[3], detection[0], detection[2], detection[4][:100])
             # Print normal IPs
             elif verbose > 3:
-                # Since the value of self.last_tw_result can be None of a 3-tuple of strings, we need to check before
-                try: 
-                    last_tw_result_0 = self.last_tw_result[0]
-                except TypeError:
-                    last_tw_result_0 = ""
-                try: 
-                    last_tw_result_1 = self.last_tw_result[1]
-                except TypeError:
-                    last_tw_result_1 = ""
-                try: 
-                    last_tw_result_2 = self.last_tw_result[2]
-                except TypeError:
-                    last_tw_result_2 = ""
-
                 print green("\t+ {} verdict: {} (LogLikelihood sum: {})".format(self.address, self.last_verdict, self.cumulative_log_likelihood))
-                #print green("\t+{} verdict: {} (Risk score: {}) | TW weighted score: {} = {} x {}".format(self.address, self.last_verdict, self.last_risk, last_tw_result_0, last_tw_result_1, last_tw_result_2))
                 if verbose > 4:
                     for tuple4 in self.active_tuples:
                         tuple_result = self.tuple_results[tuple4]
