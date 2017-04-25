@@ -11,16 +11,20 @@ from datetime import timedelta
 import argparse
 import multiprocessing
 from multiprocessing import Queue
+from multiprocessing import Pipe
 import time
 from modules.markov_models_1 import __markov_models__
 from os import listdir
 from os.path import isfile, join
 from ip_handler import IpHandler
-from utils import SignalHandler
 import random
 
 
 version = '0.4'
+global switch
+switch = True
+
+
 
 def timing(f):
     """ Function to measure the time another function takes."""
@@ -386,9 +390,15 @@ class Processor(multiprocessing.Process):
         self.dontdetect = dontdetect
         self.ip_handler = IpHandler(self.verbose, self.debug,self.get_whois, classifier)
         self.detection_threshold = threshold;
-        # Used to keep track in which time window we are currently in (also total amount of tw)
-        self.tw_index = 0
         self.ip_whitelist = whitelist
+        #register signal for interrupting
+        signal.signal(signal.SIGINT,self.handle_signal)
+
+    def handle_signal(self, signal, frame):
+        """Asynchronous interruption of the program"""
+        self.queue.close()
+        self.ip_handler.print_alerts()
+        sys.exit(0)
 
     def get_tuple(self, tuple4):
         """ Get the values and return the correct tuple for them """
@@ -431,8 +441,7 @@ class Processor(multiprocessing.Process):
                 """
             # Process all the addresses in this time window
             self.ip_handler.process_timewindow(self.slot_starttime, self.slot_endtime, self.detection_threshold)
-            # Add 1 to the time window index 
-            self.tw_index +=1
+
             """
             # After each timeslot finishes forget the tuples that are too big. This is useful when a tuple has a very very long state that is not so useful to us. Later we forget it when we detect it or after a long time.
             ids_to_delete = []
@@ -468,7 +477,7 @@ class Processor(multiprocessing.Process):
                 # Ask for the IpAddress object for this source IP
                 ip_address = self.ip_handler.get_ip(column_values[3])
                 # Store detection result into Ip_address
-                ip_address.add_detection(tuple.detected_label, tuple.id, tuple.current_size, flowtime, column_values[6], tuple.get_state_detected_last(), self.tw_index)
+                ip_address.add_detection(tuple.detected_label, tuple.id, tuple.current_size, flowtime, column_values[6], tuple.get_state_detected_last())
         except Exception as inst:
             print 'Problem in process_out_of_time_slot() in class Processor'
             print type(inst)     # the exception instance
@@ -557,7 +566,7 @@ class Processor(multiprocessing.Process):
                                         # Ask for IpAddress object 
                                         ip_address = self.ip_handler.get_ip(column_values[3])
                                         # Store detection result into Ip_address
-                                        ip_address.add_detection(tuple.detected_label, tuple.id, tuple.current_size, flowtime,column_values[6], tuple.get_state_detected_last(),self.tw_index)
+                                        ip_address.add_detection(tuple.detected_label, tuple.id, tuple.current_size, flowtime,column_values[6], tuple.get_state_detected_last())
                                 elif flowtime > self.slot_endtime:
                                     # Out of time slot
                                     self.process_out_of_time_slot(column_values, last_tw = False)
@@ -578,12 +587,6 @@ class Processor(multiprocessing.Process):
                             # Here for some reason we still miss the last flow. But since is just one i will let it go for now.
                         # Just Return
                         return True
-        except KeyboardInterrupt:
-            # Print Summary of detections in the last Time Window
-            #self.ip_handler.print_addresses(flowtime, flowtime, self.detection_threshold,self.sdw_width, True)
-            # Print final Alerts
-            #self.ip_handler.print_alerts()
-            return True
         except Exception as inst:
             print '\tProblem with Processor()'
             print type(inst)     # the exception instance
@@ -595,6 +598,12 @@ class Processor(multiprocessing.Process):
 ####################
 # Main
 ####################
+def signal_handler(signal, frame):
+    print "\nInterrupting slips"
+    #signal will be processed in the child process
+    pass
+        
+
 if __name__ == '__main__':  
     print 'Stratosphere Linux IPS. Version {}'.format(version)
     print('https://stratosphereips.org\n')
@@ -653,7 +662,6 @@ if __name__ == '__main__':
     whitelist = set()
     if args.whitelist:
         try:
-            #whitelist = set()
             content = set(line.rstrip('\n') for line in open(args.whitelist))
             if len(content) > 0:
                 if args.verbose > 1:
@@ -668,15 +676,22 @@ if __name__ == '__main__':
 
     # Create the thread and start it
     processorThread = Processor(queue, timedelta(minutes=args.width), args.datawhois, args.verbose, args.amount, args.dontdetect, args.threshold, args.debug, whitelist,args.classifier)
-    SH = SignalHandler(processorThread)
-    SH.register_signal(signal.SIGINT)
+    
+    #start the process
     processorThread.start()
+    #register signal handler in parent process
+    signal.signal(signal.SIGINT,signal_handler)
+
 
     # Just put the lines in the queue as fast as possible
     for line in sys.stdin:
-        queue.put(line)
+            queue.put(line)
     if args.verbose > 2:
         print 'Finished receiving the input.'
     # Shall we wait? Not sure. Seems that not
     time.sleep(1)
     queue.put('stop')
+    processorThread.join()
+
+    print "\nExiting Stratosphere IPS."
+

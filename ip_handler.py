@@ -65,14 +65,15 @@ class IpAddress(object):
         self.tuples = {}
         self.active_tuples = set()
         self.tuple_results = {}
-        self.alerts = []
+        
         self.last_time = None
         self.last_verdict = None
-
         self.cumulative_log_likelihood = 0
+
+        self.alerts = []
         self.debug = debug
 
-    def add_detection(self, label, tuple, n_chars, input_time, dest_add, state, tw_index):
+    def add_detection(self, label, tuple, n_chars, input_time, dest_add, state):
         """ Stores new detection with timestamp"""
         # The detection structure is a 3-tuple of a label, the number of chars when it was detected and when it was detected
         detection = (label, n_chars, input_time, dest_add, state)
@@ -291,6 +292,7 @@ class IpHandler(object):
         self.whois = whois
         self.classifier = Classifier(classifier)
         self.whois_handler = WhoisHandler("WhoisData.txt")
+        
                 
     def process_timewindow(self, start_time, end_time, threshold):
         #get feature vector from all active IPs
@@ -328,6 +330,14 @@ class IpHandler(object):
         if ip_string not in self.active_addresses:
             self.active_addresses.append(ip_string)
         return ip
+
+    def get_alerts(self):
+        ret = set()
+        for ip in self.addresses.values():
+            if len(ip.alerts) > 0:
+                for alert in ip.get_alerts():
+                    ret.add(alert)
+        return ret
 
     def print_alerts(self):
         """ Gater all the alerts in the handler and print them"""
