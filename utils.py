@@ -7,10 +7,10 @@ import re
 import sys
 import pickle
 from math import log
-from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 import time
 import os
-    
+import numpy
 
 class WhoisHandler(object):
     """This class is used for getting the whois information. Since queries to whois service takes too much time it stores all the information localy in the txt file.
@@ -72,6 +72,10 @@ class WhoisHandler(object):
                 print 'Error looking the whois of {}'.format(ip)
                 # continue with the work\
                 pass
+            except ipwhois.exceptions.HTTPLookupError:
+                print 'Error looking the whois of {}'.format(ip)
+                # continue with the work\
+                pass
             # Store in the cache
             self.whois_data[ip] = desc
             self.new_item = True;
@@ -98,11 +102,9 @@ class Classifier(object):
     """This class contains classifier from scikit-learn library"""
 
     def __init__(self, filename):
-        self.rf = None
+        self.model = None
         try:
-            with open(filename, 'r') as f:
-                self.rf = pickle.load(f)
-                print "Classifier '{}' loaded successfully".format(filename)
+            self.model = pickle.load(open(filename, "rb"))
         except IOError:
             print "ERROR: Loading serialzied RandomForestClassifier from '{}' was NOT successful.".format(filename)
             exit(1)
@@ -111,16 +113,20 @@ class Classifier(object):
     def get_log_likelihood(self, vector_list):
         likelihoods = []
         #get probabilities
-        results = self.rf.predict_proba(vector_list)
+        results = self.model.predict_proba(vector_list)
         #compute log likelihood
         for result in results:
             if result[0] == 0:
-                likelihoods.append(log(sys.float_info.min))
+                #likelihoods.append(log(sys.float_info.min))
+                likelihoods.append(log(0.000001))
             elif result[1] == 0:
-                likelihoods.append(log(sys.float_info.max))
+                likelihoods.append(log(1000000))
             else:
                 likelihoods.append( log((result[0]/result[1]))) # possible zero division?
         return likelihoods
+
+    def classify(self,features):
+        return self.model.predict(numpy.array(features))
 
 
 

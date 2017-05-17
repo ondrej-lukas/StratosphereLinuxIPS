@@ -17,9 +17,9 @@ class Alert(object):
         return  NotImplemented
 
 class IpDetectionAlert(Alert):
-    def __init__(self, time, source, score):
+    def __init__(self, time, source, vector):
         super(IpDetectionAlert, self).__init__(time,source)
-        self.score= score
+        self.vector = vector
 
     def __str__(self):
-        return yellow('*Labeled with cumulative log likelihood: {}\t time: {}*'.format(self.score,self.time.strftime('%Y/%m/%d %H:%M:%S')))
+        return yellow('*time: {}\t features:{}*'.format(self.time.strftime('%Y/%m/%d %H:%M:%S'),self.vector))

@@ -1,42 +1,45 @@
 130.83.183.89	TU Darmstadt, Hochschulrechenzentrum Mornewegstr. 30, 64293 Darmstadt, Germany,DE
 130.243.207.77	Uppsala Student Network,SE
 187.67.26.247	CLARO S.A.,BR
-ff02::1:ff87:1f07	Private Use
+201.222.96.178	SATELITAL - GENERICO,BO
 119.59.124.163	453 Ladplacout Jorakhaebua,TH
 147.32.3.64	Prague,CZ
+61.102.156.53	Tbroad Suwon Broadcasting Corporation,KR
 198.185.19.211	LexisNexis,US
 198.185.19.210	LexisNexis,US
 198.185.19.213	LexisNexis,US
 198.185.19.212	LexisNexis,US
+74.125.232.199	Google Inc.,US
 46.4.50.148	Hetzner Online AG Datacenter 14,DE
-23.62.237.48	Akamai Technologies, Inc.,US
 66.155.11.250	Peer 1 Dedicated Hosting,US
+74.125.232.194	Google Inc.,US
 192.249.122.131	InMotion Hosting, Inc.,US
+74.125.232.197	Google Inc.,US
 ff02::1:ffe8:612	Private Use
 192.241.229.144	Digital Ocean, Inc.,US
-195.113.232.73	CESNET, z.s.p.o. Prague 6,CZ
 31.23.89.241	OJSC Rostelecom Macroregional Branch South Rostov, Russia,RU
+103.23.17.4	Citylink Ltd PO Box 9328,NZ
 5.79.209.58	Intersvyaz-2 JSC,RU
 65.55.223.28	Microsoft Corporation,US
 65.55.223.29	Microsoft Corporation,US
 185.57.248.141	CJSC Insit-Invest,RU
-ff02::1:ffbd:f5d0	Private Use
+146.95.130.38	Hunter College,US
 65.55.223.20	Microsoft Corporation,US
 141.101.114.59	CloudFlare, Inc.,US
 65.55.223.22	Microsoft Corporation,US
 31.200.244.17	UNELINK TELECOM, S.A.,ES
 76.74.248.230	ServerBeach,US
-2a00:1450:4014:80b::1019	EU metro frontend,IE
 201.232.32.124	EPM Telecomunicaciones S.A. E.S.P.,CO
 ff02::1:ff00:4f7	Private Use
 200.116.206.58	DAEWOO_TRUKS_SA,CO
-76.74.254.120	ServerBeach,US
 50.17.183.90	Amazon.com, Inc.,US
 216.92.249.190	pair Networks,US
 216.34.181.97	SourceForge, Inc.,US
 37.229.92.32	Kyivstar GSM Ukrainian mobile phone operator,UA
+147.32.84.211	Prague,CZ
 64.222.192.254	FAIRPOINT COMMUNICATIONS, INC.,US
 ff02::1:ff00:c04	Private Use
+200.119.236.86	Gtd Internet S.A.,CL
 ff02::1:ffe2:60b5	Private Use
 147.32.83.210	Prague,CZ
 54.230.45.68	Amazon Technologies Inc.,US
@@ -46,11 +49,12 @@ ff02::1:ffe2:60b5	Private Use
 5.35.124.66	LLC "Multiscan",RU
 ff02::1:ff00:b30	Private Use
 54.235.157.205	Amazon Technologies Inc.,US
-fd2d:ab8c:225:0:ddfa:5d45:debd:775	Private Use
-172.217.16.106	Google Inc.,US
+195.113.214.226	CESNET, z.s.p.o. Prague 6,CZ
+195.113.232.90	CESNET, z.s.p.o. Prague 6,CZ
 195.113.232.91	CESNET, z.s.p.o. Prague 6,CZ
 103.252.184.250	RedFox Teleservices Pvt LTd No 3,2nd floor, Road No 9, plot no 89, Jubilee hills, Hyderabad,IN
 ff02::1:ff3c:c77f	Private Use
+2a00:1450:4001:808::1003	EU metro frontend,IE
 85.13.150.120	Neue Medien Muennich GmbH,DE
 187.45.193.163	Locaweb Servios de Internet S/A,BR
 52.16.98.15	Amazon Data Services Ireland Limited,IE
@@ -59,6 +63,7 @@ ff02::1:ff3c:c77f	Private Use
 109.246.86.158	Robert Gordon subs,GB
 54.192.99.173	Amazon Technologies Inc.,US
 81.169.145.87	Strato Rechenzentrum, Berlin,DE
+74.125.39.125	Google Inc.,US
 54.231.120.210	Amazon Technologies Inc.,US
 31.210.122.233	INTER NET BILGISAYAR LTD STI,TR
 ff02::1:ff00:d25	Private Use
@@ -75,6 +80,7 @@ ff:ff:ff:ff:ff:ff	Not an IP
 173.194.35.90	Google Inc.,US
 157.55.130.159	Microsoft Corporation,US
 37.59.39.46	OVH SAS Dedicated servers http://www.ovh.com,FR
+111.221.77.151	Microsoft Microsoft Corp, Singapore,SG
 fe80::91d7:c7cc:5795:f857	Private Use
 ff02::1:ff5a:c4a8	Private Use
 2a00:1450:4014:80b::100f	EU metro frontend,IE
@@ -89,28 +95,28 @@ ff02::1:ff5a:c4a8	Private Use
 157.55.235.172	Microsoft Corporation,US
 94.138.210.202	IHS-VDS-NET-2,TR
 188.138.72.79	Mass Sub Alloc,DE
+62.24.64.52	UPC Servers Praha,CZ
 5.178.147.250	Magticom,GE
 173.194.113.177	Google Inc.,US
 5.166.213.239	CJSC "ER-Telecom Holding" Nizhny Novgorod branch Nizhny Novgorod, Russia Individual PPPoE customers,RU
 54.209.129.218	Amazon Technologies Inc.,US
 151.229.71.160	Sky UK Limited,GB
-2a00:1450:4005:809::100f	EU metro frontend,IE
+147.32.87.44	Prague,CZ
 192.185.29.116	WEBSITEWELCOME.COM,US
+157.55.130.175	Microsoft Corporation,US
 128.130.178.133	Wiedner Hauptstrasse 8-10/E020 A-1040 Wien,AT
 173.194.70.95	Google Inc.,US
 10.0.2.2	Private Use
 216.151.210.122	ServerBeach,US
-00:00:00:00:00:00	Not an IP
+167.68.20.181	Thomson Reuters (Legal) Inc.,US
 66.235.139.19	Adobe Systems Inc.,US
-66.235.138.195	Adobe Systems Inc.,US
+77.23.100.211	Kabel Deutschland Breitband Customer 17,DE
 95.211.209.89	LeaseWeb Netherlands B.V.,NL
 50.62.245.1	GoDaddy.com, LLC,US
 5.55.43.103	Hellas On Line S.A.,GR
-23.63.81.224	Akamai Technologies, Inc.,US
 103.1.186.61	Mammoth Media Pty Ltd Suite S04 Level 1 / 34 Coonan St,AU
 23.21.43.186	Amazon.com, Inc.,US
 95.172.94.54	Quantcast Route,US
-131.155.224.81	P.O. Box 513 5600 MD Eindhoven,NL
 101.178.99.55	Telstra Level 12, 242 Exhibition St Melbourne VIC  3000,AU
 68.116.5.134	Charter Communications,US
 ff02::16	Private Use
@@ -124,7 +130,7 @@ ff02::1:ff77:2762	Private Use
 85.86.85.239	Global Telecommunication Service Provider of the Basque Country in Spain,ES
 2a00:1450:4014:80b::1008	EU metro frontend,IE
 2a00:1450:4014:80b::1007	EU metro frontend,IE
-187.45.193.222	Locaweb Servios de Internet S/A,BR
+147.32.192.3	Prague,CZ
 2a00:1450:4014:80b::1005	EU metro frontend,IE
 2a00:1450:4014:80b::1004	EU metro frontend,IE
 2a00:1450:4014:80b::1003	EU metro frontend,IE
@@ -135,13 +141,13 @@ ff02::1:ff77:2762	Private Use
 54.225.194.96	Amazon Technologies Inc.,US
 93.184.220.197	NETBLK-03-EU-93-184-220-0-22,EU
 93.184.220.196	NETBLK-03-EU-93-184-220-0-22,EU
+67.232.77.17	Embarq Corporation,US
 157.56.52.20	Microsoft Corporation,US
 157.56.52.23	Microsoft Corporation,US
 101.100.162.168	Republic Telecom 231 Kew Crescent Kew Green,SG
 81.0.212.200	Gemius s.r.o.,CZ
 81.0.212.201	Gemius s.r.o.,CZ
 157.56.52.29	Microsoft Corporation,US
-173.194.44.239	Google Inc.,US
 73.152.137.205	Comcast Cable Communications, LLC,US
 ff02::1:ffcc:1f02	Private Use
 212.58.244.114	BBC Telstra London Hosting Centre ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
@@ -150,11 +156,12 @@ ff02::1:ffcc:1f02	Private Use
 192.152.0.148	HYDRABURX CORPORATION,US
 223.222.13.74	Tbroad Suwon Broadcasting Corporation,KR
 197.27.66.82	organisation : ORANGE TUNISIE INTERNET contact name: Walid CHELBI phone:  +216 3001 3001 e-mail: service_IP@orangetunisie.tn website: http://www.orange.tn/,TN
+212.117.171.138	root SA,LU
 64.4.23.172	Microsoft Corporation,US
 85.128.202.47	nazwa.pl webhosting servers,PL
 64.4.23.171	Microsoft Corporation,US
 64.4.23.176	Microsoft Corporation,US
-ff02::1:ff00:3a7	Private Use
+ff02::1:ff87:1f07	Private Use
 137.194.57.73	Telecom ParisTech DSI 46 rue Barrault 75634 Paris CEDEX 13 France,FR
 2a00:1450:4005:808::100f	EU metro frontend,IE
 205.251.219.94	Amazon.com, Inc.,US
@@ -165,8 +172,7 @@ ff02::1:ff00:3a7	Private Use
 176.9.212.187	Stefan Kottwitz,DE
 202.162.188.104	Tech Mahindra Limited,IN
 211.49.227.154	SK Broadband Co Ltd,KR
-54.148.246.44	Amazon Technologies Inc.,US
-146.95.130.38	Hunter College,US
+ff02::1:ffbd:f5d0	Private Use
 89.3.28.69	End-User NUMERICABLE,FR
 172.217.16.99	Google Inc.,US
 159.226.47.113	CHINA SCIENCE AND TECHNOLOGY NETWORK No.4, Zhongguancun 4th South Street, Haidian District, Beijing,CN
@@ -182,14 +188,16 @@ ff02::1:ff00:cc7	Private Use
 145.20.44.221	Open Universiteit,NL
 130.208.140.109	Haskoli Islands The University of Iceland,IS
 2a00:1450:4014:80b::101d	EU metro frontend,IE
-5.167.36.233	JSC "ER-Telecom Holding" Yaroslavl' branch Yaroslavl', Russia PPPoE individual customers,RU
+77.75.73.12	Seznam.cz, a.s.,CZ
+213.152.180.228	Global Layer B.V.,NL
 197.37.105.176	TE Data,EG
+147.32.86.186	Prague,CZ
 66.147.244.163	Unified Layer,US
 104.27.169.23	Cloudflare, Inc.,US
 100.8.110.106	MCI Communications Services, Inc. d/b/a Verizon Business,US
 157.55.130.156	Microsoft Corporation,US
 104.27.176.117	Cloudflare, Inc.,US
-109.203.19.190	Broadband Access,NO
+187.45.193.222	Locaweb Servios de Internet S/A,BR
 ff02::1:ff00:76e	Private Use
 2a00:1450:400c:c04::bd	EU metro frontend,IE
 91.233.250.56	ul. Ksiedza Jagly 7 44-190 Knurow,PL
@@ -198,12 +206,14 @@ ff02::1:ff00:76e	Private Use
 176.9.212.188	Stefan Kottwitz,DE
 2a00:1450:4001:80f::1000	EU metro frontend,IE
 111.221.77.176	Microsoft Microsoft Corp, Singapore,SG
+62.102.225.5	NCC#2011031121,FR
 111.221.77.171	Microsoft Microsoft Corp, Singapore,SG
 111.221.77.172	Microsoft Microsoft Corp, Singapore,SG
 65.50.19.140	GigaMonster,US
 47.92.124.237	Aliyun Computing Co., LTD 5F, Builing D, the West Lake International Plaza of S&T No.391 Wen'er Road, Hangzhou, Zhejiang, China, 310099,CN
 2a00:1450:4014:80a::1009	EU metro frontend,IE
-5.145.248.153	Smoltelecom PPPoE (dynamik IPs pool5),RU
+195.113.214.219	CESNET, z.s.p.o. Prague 6,CZ
+78.90.99.93	Studentski grad,BG
 74.58.212.185	Le Groupe Videotron Ltee,CA
 182.231.9.143	LG Powercomm Hangang-daero Yongsan-gu Seoul 32,KR
 104.20.10.237	Cloudflare, Inc.,US
@@ -213,23 +223,25 @@ ff02::1:ff00:76e	Private Use
 2a00:1450:4014:80a::1003	EU metro frontend,IE
 2a00:1450:4014:80a::1004	EU metro frontend,IE
 2a00:1450:4014:80a::1005	EU metro frontend,IE
-2a00:1450:4014:80a::1006	EU metro frontend,IE
+195.113.214.215	CESNET, z.s.p.o. Prague 6,CZ
 2a00:1450:4014:80a::1007	EU metro frontend,IE
-61.80.66.215	Korea Telecom,KR
+147.32.84.59	Prague,CZ
 46.35.241.69	Lancom Ltd, Russia, Sevastopol Sevstar TM, broadband,RU
 ff02::1:ffff:4cef	Private Use
 111.221.77.173	Microsoft Microsoft Corp, Singapore,SG
-224.0.0.251	Private Use
+195.113.214.207	CESNET, z.s.p.o. Prague 6,CZ
+95.109.118.214	Dals-ED Edshus Edshus E-LAN,SE
 2a00:1450:4014:80a::1008	EU metro frontend,IE
 31.186.225.24	Rubicon Prefix,US
 2a00:1450:4001:80a::1018	EU metro frontend,IE
+209.132.182.31	Red Hat, Inc.,US
 145.36.215.180	RELX PLC,GB
 141.101.114.15	CloudFlare, Inc.,US
 184.168.26.1	GoDaddy.com, LLC,US
-167.68.20.181	Thomson Reuters (Legal) Inc.,US
 2.31.63.120	Orange WBC Broadband,GB
 23.62.237.56	Akamai Technologies, Inc.,US
 95.211.212.36	LeaseWeb Netherlands B.V.,NL
+87.97.152.142	BLizoo-LINKBG,BG
 95.172.94.15	Quantcast Route,US
 67.112.247.18	AT&T Internet Services,US
 192.168.1.2	Private Use
@@ -257,15 +269,15 @@ ff02::1:ffff:4cef	Private Use
 2a00:1450:400c:c00::5e	EU metro frontend,IE
 2a00:1450:4014:80a::100f	EU metro frontend,IE
 157.55.235.141	Microsoft Corporation,US
-173.194.70.132	Google Inc.,US
 37.187.251.159	OVH SAS Dedicated Servers Static IP http://www.ovh.com,FR
+210.1.225.85	SERVICE HOSTING,MY
 2001:718:2:1621::19	Czech Technical University Prague,CZ
 198.185.19.195	LexisNexis,US
 192.168.1.113	Private Use
-23.62.237.47	Akamai Technologies, Inc.,US
 192.168.1.110	Private Use
 ff02::1:ff76:2c5a	Private Use
-195.113.214.215	CESNET, z.s.p.o. Prague 6,CZ
+147.32.87.52	Prague,CZ
+2a00:1450:4014:80a::1006	EU metro frontend,IE
 52.166.196.194	Microsoft Corporation,US
 216.38.220.17	ViaWest,US
 189.143.236.132	Gestin de direccionamiento UniNet,MX
@@ -287,19 +299,20 @@ ff02::1:ff00:2c6	Private Use
 213.199.179.173	Microsoft Internet Data Center,IE
 185.31.17.249	Fastly Frankfurt 1 Operations,DE
 50.63.202.39	GoDaddy.com, LLC,US
+74.125.232.201	Google Inc.,US
 198.252.206.16	Stack Exchange, Inc.,US
 198.252.206.17	Stack Exchange, Inc.,US
 157.55.56.166	Microsoft Corporation,US
 5.165.56.253	CJSC "ER-Telecom" Company" Samara Samara, Russia PPPoE individual customers network,RU
 23.63.84.195	Akamai Technologies, Inc.,US
 255.255.255.255	Private Use
-217.122.81.111	Ziggo Consumers,NL
+61.80.66.215	Korea Telecom,KR
 195.113.214.222	CESNET, z.s.p.o. Prague 6,CZ
 197.33.139.5	TE Data-new,EG
 213.199.179.155	Microsoft Internet Data Center,IE
 147.175.20.219	Slovak Technical University Bratislava,SK
 217.79.202.132	FTTH SATEL,CH
-23.23.102.175	Amazon.com, Inc.,US
+186.109.81.79	ARNET - ADSL - IPFIJA,AR
 162.255.119.184	Namecheap, Inc.,US
 185.4.133.16	Shared Hosting IPs, daticated & VPSserver infrastracture,GR
 46.137.90.8	Amazon Web Services, Elastic Compute Cloud, EC2, EU,IE
@@ -308,30 +321,29 @@ ff02::1:ff00:2c6	Private Use
 176.32.102.119	PROD IAD,US
 31.13.69.55	Facebook,US
 46.37.6.41	ICT Managed Services SRL Via Caldera, 21 Milano,IT
-195.113.214.226	CESNET, z.s.p.o. Prague 6,CZ
+fd2d:ab8c:225:0:ddfa:5d45:debd:775	Private Use
 157.56.52.13	Microsoft Corporation,US
+77.75.73.158	Seznam.cz, a.s.,CZ
 157.56.52.16	Microsoft Corporation,US
 157.56.52.17	Microsoft Corporation,US
 77.72.118.213	comScore Application and Service Network,NL
 128.0.190.74	Customer No. 19598013 network,CZ
-195.113.232.90	CESNET, z.s.p.o. Prague 6,CZ
+172.217.16.106	Google Inc.,US
 216.38.220.18	ViaWest,US
 ff02::1:ff3e:dd3c	Private Use
 114.254.10.130	China Unicom Beijing province network China Unicom,CN
-212.70.64.187	Intuitiv Ltd. Ickford Buckinghamshire,GB
 147.32.83.1	Prague,CZ
 2a00:1450:4013:c01::5e	EU metro frontend,IE
 64.4.23.149	Microsoft Corporation,US
 70.33.239.245	Cogeco Peer 1,US
 213.155.158.41	Akamai International BV,CZ
 ff02::1:ffea:1c92	Private Use
-5.167.161.72	CJSC "ER-Telecom Holding" Kirov branch Kirov, Russia PPPoE individual customers,RU
 176.28.54.184	Host Europe GmbH,DE
 137.116.224.167	Microsoft Corp,US
 65.55.223.30	Microsoft Corporation,US
 ff02::1:ff68:ef0a	Private Use
 213.199.179.160	Microsoft Internet Data Center,IE
-5.144.130.38	Hostiran Network,IR
+54.230.45.74	Amazon Technologies Inc.,US
 54.230.46.94	Amazon Technologies Inc.,US
 fd2d:ab8c:225:0:46a:c1a7:8a4b:1942	Private Use
 83.149.35.231	Ural Branch Of OJSC MegaFon GPRS/UMTS Network, Pool 1.,RU
@@ -341,39 +353,42 @@ fd2d:ab8c:225:0:46a:c1a7:8a4b:1942	Private Use
 239.255.255.250	Private Use
 81.1.133.121	CJSC Scientific-Production Association Progressive Technologies,RU
 54.209.61.132	Amazon Technologies Inc.,US
+147.32.84.164	Prague,CZ
 168.62.33.142	Microsoft Corp,US
 ff02::1:ff99:23c8	Private Use
-31.220.190.203	Regional Digital Telecommunication Company Broadband service 1024,RU
 172.217.16.110	Google Inc.,US
 107.22.184.136	Amazon.com, Inc.,US
 212.70.64.183	Intuitiv Ltd. Ickford Buckinghamshire,GB
 91.190.216.212	Skype Lu,LU
 111.221.77.146	Microsoft Microsoft Corp, Singapore,SG
 195.113.232.83	CESNET, z.s.p.o. Prague 6,CZ
-195.113.232.82	CESNET, z.s.p.o. Prague 6,CZ
+212.70.64.187	Intuitiv Ltd. Ickford Buckinghamshire,GB
 54.230.99.50	Amazon Technologies Inc.,US
 195.113.232.89	CESNET, z.s.p.o. Prague 6,CZ
 195.113.232.88	CESNET, z.s.p.o. Prague 6,CZ
 213.199.179.154	Microsoft Internet Data Center,IE
+89.233.204.190	ViaEuropa Norrkoping,SE
 ff02::1:ff4b:1942	Private Use
+147.32.192.34	Prague,CZ
 119.247.126.78	Hong Kong Broadband Network Ltd,HK
 fd2d:ab8c:225:0:1dd1:f146:ce60:e3aa	Private Use
-210.1.225.85	SERVICE HOSTING,MY
-103.23.17.4	Citylink Ltd PO Box 9328,NZ
+147.32.86.168	Prague,CZ
+134.60.222.32	Ulm, Germany,DE
+74.125.232.217	Google Inc.,US
 95.211.137.76	LeaseWeb Netherlands B.V.,NL
 54.225.174.133	Amazon Technologies Inc.,US
 ff02::1:ff00:fa9	Private Use
 31.210.122.246	INTER NET BILGISAYAR LTD STI,TR
+2a00:1450:4016:805::200a	EU metro frontend,IE
 71.195.244.77	Comcast Cable Communications, LLC,US
-5.35.68.182	LLC "Multiscan",RU
+50.19.238.200	Amazon.com, Inc.,US
 173.252.100.27	Facebook, Inc.,US
-ff02::1:ff00:fa5	Private Use
+5.145.248.153	Smoltelecom PPPoE (dynamik IPs pool5),RU
 ff02::1:ff05:44da	Private Use
 54.235.195.128	Amazon Technologies Inc.,US
-46.55.21.248	JSC "Moldtelecom" S.A. Chisinau, Moldova,MD
+ff02::1:ff1b:7767	Private Use
 174.122.63.102	SoftLayer Technologies Inc.,US
 199.16.156.198	Twitter Inc.,US
-65.55.223.46	Microsoft Corporation,US
 190.93.244.83	CloudFlare Latin America S.R.L,CR
 fd2d:ab8c:225:0:512:a519:bb75:80ea	Private Use
 94.26.179.25	Arbital Customers,RU
@@ -397,21 +412,24 @@ fd2d:ab8c:225:0:512:a519:bb75:80ea	Private Use
 199.16.156.6	Twitter Inc.,US
 5.58.1.11	Lanet Network Ltd,UA
 195.113.214.249	CESNET, z.s.p.o. Prague 6,CZ
-110.174.7.48	TPG Internet Pty Ltd.,AU
+192.168.1.121	Private Use
+54.148.246.44	Amazon Technologies Inc.,US
 ff02::1	Private Use
 ff02::2	Private Use
 5.135.191.102	Dedicated Servers,FR
 77.72.112.213	Nedstat Application and Service Network,NL
+157.48.141.20	Reliance Jio infocomm ltd,IN
 4.4.4.4	Level 3 Communications, Inc.,US
 111.221.74.29	Microsoft Microsoft Corp, Singapore,SG
 144.76.34.117	Server Block,DE
 54.192.47.153	Amazon Technologies Inc.,US
+202.95.154.126	PT. Pasifik Satelit Nusantara Kawasan Karyadeka Pancamurni A-3 Lemahabang Bekasi 17550,ID
+188.112.70.72	Slovanet 3PP 1st pool,SK
 111.221.74.20	Microsoft Microsoft Corp, Singapore,SG
 174.139.164.90	Krypt Technologies,US
 185.14.28.30	UASERVERS NETWORK,NL
 111.221.74.23	Microsoft Microsoft Corp, Singapore,SG
 54.240.162.219	Amazon Technologies Inc.,US
-208.72.90.152	Oracle Corporation,US
 130.191.140.34	San Diego State University,US
 87.255.31.150	BIG TELECOM CLOSED JSC,RU
 69.194.193.70	Solar VPS,US
@@ -419,41 +437,43 @@ ff02::2	Private Use
 5.9.59.184	Hetzner Online AG Datacenter 16,DE
 ff02::1:ff60:e3aa	Private Use
 62.178.29.92	UPC Telekabel DHCP Range,AT
-50.19.238.200	Amazon.com, Inc.,US
 99.185.96.60	AT&T Internet Services,US
 ff02::1:ff6d:a0f6	Private Use
-31.28.58.144	AIST ISP, PPTP (physical persons),RU
-209.15.209.75	Peer 1 Hosting Toronto,CA
+81.27.192.20	UPC Ceska republika, a.s. Backbone Servers,CZ
+208.72.90.152	Oracle Corporation,US
 74.3.161.45	Shaw Telecom G.P.,CA
+178.117.222.67	Telenet N.V. Residentials,BE
 104.28.15.18	Cloudflare, Inc.,US
 80.51.120.132	PHU UniNET Joanna Mioduszewska ul.  Sienkiewicza 1 19-230 Szczuczyn,PL
 93.84.189.71	BELTELECOM MINSK branch BYFLY(tm) dynamic pools Republic of Belarus,BY
-38.127.70.131	PSINet, Inc.,US
+65.55.223.46	Microsoft Corporation,US
 65.55.223.47	Microsoft Corporation,US
 65.55.223.44	Microsoft Corporation,US
 50.19.97.123	Amazon.com, Inc.,US
 84.18.198.45	123Connect Ltd,GB
+77.75.72.18	Seznam.cz,CZ
 212.58.244.27	BBC Telstra London Hosting Centre ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
 212.58.244.26	BBC Telstra London Hosting Centre ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
 2a00:1450:400c:c0b::bc	EU metro frontend,IE
 203.76.105.82	Link3 Technologies Ltd. Internet Service Provider, Dhaka, Bangladesh,BD
 173.194.113.51	Google Inc.,US
+147.32.87.27	Prague,CZ
 54.230.45.133	Amazon Technologies Inc.,US
 fd2d:ab8c:225:0:d005:7772:8ff6:a38f	Private Use
 216.38.220.20	ViaWest,US
 94.181.200.119	JSC "ER-Telecom Holding" Kirov branch Kirov, Russia PPPoE individual customers,RU
-61.102.156.53	Tbroad Suwon Broadcasting Corporation,KR
+216.38.220.22	ViaWest,US
 216.38.220.24	ViaWest,US
 216.38.220.26	ViaWest,US
-176.34.143.35	CloudFront DUB4,NL
+51.254.122.161	OVH SAS,FR
 130.88.154.5	The University of Manchester Local Area Network,GB
-ff02::1:ff01:fcd7	Private Use
+209.15.209.75	Peer 1 Hosting Toronto,CA
 66.71.245.50	Total Server Solutions L.L.C.,US
 79.24.103.121	NAS DHCP Pool ALESSANDRIA,IT
 50.225.66.186	Comcast Cable Communications, LLC,US
-195.113.214.207	CESNET, z.s.p.o. Prague 6,CZ
+54.240.162.20	Amazon Technologies Inc.,US
 147.32.80.105	Prague,CZ
-184.72.230.183	Amazon.com, Inc.,US
+147.32.86.53	Prague,CZ
 36.37.176.6	VIETTEL (CAMBODIA) PTE., LTD.,KH
 194.228.113.24	Nam OSN Prague 9,CZ
 74.208.13.22	1&1 Internet Inc.,US
@@ -461,7 +481,7 @@ ff02::1:ff01:fcd7	Private Use
 190.93.246.15	CloudFlare Latin America S.R.L,CR
 54.243.155.66	Amazon Technologies Inc.,US
 39.116.58.108	SK Broadband Co Ltd,KR
-195.113.214.221	CESNET, z.s.p.o. Prague 6,CZ
+74.125.232.254	Google Inc.,US
 190.93.244.15	CloudFlare Latin America S.R.L,CR
 111.67.18.231	J2 AUSTRALIA HOSTING PTY LTD Melbourne Victoria 3805,AU
 5.248.81.230	Kyivstar GSM Ukrainian mobile phone operator,UA
@@ -476,10 +496,11 @@ ff02::1:ff49:8c14	Private Use
 66.199.61.150	Brazoria INET,US
 185.57.30.241	Octopusnet NAT pool 3,RU
 208.91.197.54	Confluence Networks Inc,VG
-10.192.123.114	Private Use
+38.127.70.131	PSINet, Inc.,US
 224.0.0.1	Private Use
 147.32.82.2	Prague,CZ
 109.236.82.186	WorldStream IPv4.25,NL
+2a00:1450:4001:80f::1004	EU metro frontend,IE
 157.56.52.47	Microsoft Corporation,US
 157.56.52.46	Microsoft Corporation,US
 95.182.164.19	TECTEO Rue Louvrex, 95 4000 Liege,BE
@@ -490,21 +511,24 @@ ff02::1:ff00:f72	Private Use
 ff02::1:ff00:1	Private Use
 ff02::1:ff00:0	Private Use
 219.93.24.2	TMNET, TELEKOM MALAYSIA Internet Service Provider,MY
-192.185.144.192	WEBSITEWELCOME.COM,US
 ff02::1:ff7f:abb3	Private Use
 77.72.116.213	comScore Application and Service Network,NL
 ff02::1:ff00:c5c	Private Use
+209.85.148.147	Google Inc.,US
 ff02::1:ff9c:93be	Private Use
 2a00:1450:4014:80a::101f	EU metro frontend,IE
 2a00:1450:4014:80a::101d	EU metro frontend,IE
+2a00:1450:400d:807::200e	EU metro frontend,IE
+174.133.57.141	SoftLayer Technologies Inc.,US
 ff02::1:ffd5:db1c	Private Use
 204.9.177.195	Typepad,US
+110.174.7.48	TPG Internet Pty Ltd.,AU
 207.198.113.224	Peer 1 Dedicated Hosting,US
 108.162.197.239	Cloudflare, Inc.,US
 172.227.109.48	Akamai Technologies, Inc.,US
 111.221.77.169	Microsoft Microsoft Corp, Singapore,SG
 ff02::1:ff00:994	Private Use
-fe80::4a8:b1f0:5819:1034	Private Use
+73.209.38.76	Comcast IP Services, L.L.C.,US
 23.63.66.110	Akamai Technologies, Inc.,US
 111.221.77.161	Microsoft Microsoft Corp, Singapore,SG
 111.221.77.160	Microsoft Microsoft Corp, Singapore,SG
@@ -513,27 +537,27 @@ fe80::4a8:b1f0:5819:1034	Private Use
 74.117.207.219	Oracle Corporation,US
 198.1.85.52	Unified Layer,US
 2a00:1450:4014:80a::1019	EU metro frontend,IE
-185.82.216.143	ITL Sofia Datacenter Network,BG
+217.122.81.111	Ziggo Consumers,NL
 217.12.199.90	Provider Local Internet Registry,UA
-195.113.214.219	CESNET, z.s.p.o. Prague 6,CZ
 195.113.232.75	CESNET, z.s.p.o. Prague 6,CZ
 54.217.239.156	Amazon Technologies Inc.,US
 2a00:1450:4014:80a::1017	EU metro frontend,IE
-ff02::c	Private Use
+23.63.81.224	Akamai Technologies, Inc.,US
 195.113.232.72	CESNET, z.s.p.o. Prague 6,CZ
-2a00:1450:4014:80a::100e	EU metro frontend,IE
+195.113.232.73	CESNET, z.s.p.o. Prague 6,CZ
 173.194.34.239	Google Inc.,US
 65.55.223.23	Microsoft Corporation,US
 157.55.56.151	Microsoft Corporation,US
+195.113.232.82	CESNET, z.s.p.o. Prague 6,CZ
 ff02::1:ffb3:7085	Private Use
-62.102.225.5	NCC#2011031121,FR
-213.152.180.228	Global Layer B.V.,NL
+2a00:1450:4014:80b::1006	EU metro frontend,IE
 2a00:1450:4014:80a::1002	EU metro frontend,IE
 209.237.150.20	Web.com, Inc.,US
-54.83.25.6	Amazon Technologies Inc.,US
+23.62.237.48	Akamai Technologies, Inc.,US
+147.32.85.7	Prague,CZ
 167.68.20.174	Thomson Reuters (Legal) Inc.,US
 107.145.35.51	BRIGHT HOUSE NETWORKS, LLC,US
-81.27.192.20	UPC Ceska republika, a.s. Backbone Servers,CZ
+23.62.237.47	Akamai Technologies, Inc.,US
 173.194.112.11	Google Inc.,US
 216.38.220.21	ViaWest,US
 147.32.82.19	Prague,CZ
@@ -543,9 +567,10 @@ ff02::1:ffb3:7085	Private Use
 157.55.130.170	Microsoft Corporation,US
 5.166.121.227	CJSC "ER-Telecom Holding" Barnaul branch Barnaul, Russia PPPoE individual customers,RU
 157.55.130.172	Microsoft Corporation,US
-157.55.130.175	Microsoft Corporation,US
-216.38.220.23	ViaWest,US
+192.185.144.192	WEBSITEWELCOME.COM,US
+209.85.149.95	Google Inc.,US
 185.31.16.130	Fastly Amsterdam 1 Operations,NL
+66.235.138.195	Adobe Systems Inc.,US
 173.194.32.222	Google Inc.,US
 91.48.83.56	Deutsche Telekom AG,DE
 23.21.122.142	Amazon.com, Inc.,US
@@ -561,19 +586,20 @@ ff02::1:ff96:6cd3	Private Use
 5.49.131.183	Pool for Broadband CABLE customers,FR
 157.55.235.151	Microsoft Corporation,US
 175.131.225.243	KDDI CORPORATION GARDEN AIR TOWER,3-10-10,Iidabashi,Chiyoda-ku,Tokyo,JP
-157.55.56.146	Microsoft Corporation,US
+5.167.36.233	JSC "ER-Telecom Holding" Yaroslavl' branch Yaroslavl', Russia PPPoE individual customers,RU
 173.194.113.178	Google Inc.,US
-51.254.122.161	OVH SAS,FR
+80.237.159.15	Hosteurope GmbH koeln@hosteurope.de,DE
+176.34.143.35	CloudFront DUB4,NL
 23.62.237.65	Akamai Technologies, Inc.,US
 2.4.148.179	POP MON,FR
-2620:0:862:ed1a::2:b	Wikimedia Foundation Inc.,US
+195.113.214.251	CESNET, z.s.p.o. Prague 6,CZ
 85.251.57.124	AUNA - Aragon,ES
-54.240.162.20	Amazon Technologies Inc.,US
 2607:f8b0:4005:801::2003	Google Inc.,US
 104.37.207.75	Cogeco Cable Holdings Inc,CA
 212.58.246.54	BBC Cable and Wireless Watford ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
 104.28.14.18	Cloudflare, Inc.,US
 93.118.215.12	DIGITAL CABLE SYSTEMS SA Conect Business Center, B-dul Dimitrie Pompei nr. 10A Bucuresti, 020337, Romania,RO
+173.192.170.88	SoftLayer Technologies Inc.,US
 2404:6800:4004:80a::1018	Google IPv6 address block in AP,AU
 195.113.231.211	CESNET, z.s.p.o. Prague 6,CZ
 184.171.254.44	HostDime.com, Inc.,US
@@ -588,16 +614,18 @@ ff02::1:ff87:cbf8	Private Use
 ff02::1:ffcd:badf	Private Use
 213.199.179.167	Microsoft Internet Data Center,IE
 68.232.35.139	MCI Communications Services, Inc. d/b/a Verizon Business,US
+54.192.99.113	Amazon Technologies Inc.,US
 162.247.242.19	New Relic,US
 162.144.250.237	Unified Layer,US
-2a00:1450:4016:805::200a	EU metro frontend,IE
-137.117.90.63	Microsoft Corp,US
+74.125.232.215	Google Inc.,US
+184.72.230.183	Amazon.com, Inc.,US
 73.79.230.235	Comcast IP Services, L.L.C.,US
 2a02:26f0:10::214:b439	Akamai International, B.V.,EU
 10.0.2.255	Private Use
 75.191.181.231	Time Warner Cable Internet LLC,US
 2a00:1450:4014:80b::101a	EU metro frontend,IE
 216.38.220.16	ViaWest,US
+2a00:1450:4005:809::1017	EU metro frontend,IE
 147.32.192.127	Prague,CZ
 208.100.26.234	Steadfast,US
 95.71.13.236	OJSC Rostelecom, Belgorod branch ex-netname:        RU-BELSVYAZ-NET,RU
@@ -607,18 +635,20 @@ ff02::1:ffcd:badf	Private Use
 147.32.80.9	Prague,CZ
 212.58.244.71	BBC Telstra London Hosting Centre ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
 62.210.198.140	IP Pool for Iliad-Entreprises Business Hosting Customers,FR
-111.221.74.45	Microsoft Microsoft Corp, Singapore,SG
+ff02::1:ffce:e387	Private Use
+209.85.148.105	Google Inc.,US
+212.58.244.66	BBC Telstra London Hosting Centre ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
 212.58.246.55	BBC Cable and Wireless Watford ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
 ff02::1:ff21:ab75	Private Use
 2607:f8b0:4000:807::1017	Google Inc.,US
-37.195.228.87	subnet 37.195.224-231 ethernet pool,RU
+2404:6800:4006:800::200e	Google IPv6 address block in AP,AU
 212.58.246.213	BBC Cable and Wireless Watford ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
 212.58.246.212	BBC Cable and Wireless Watford ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
 78.47.139.102	Hetzner Online AG - Virtualisierung,DE
 205.251.219.149	Amazon.com, Inc.,US
 54.217.244.46	Amazon Technologies Inc.,US
 ff02::1:2	Private Use
-ff02::1:3	Private Use
+31.220.190.203	Regional Digital Telecommunication Company Broadband service 1024,RU
 64.4.23.150	Microsoft Corporation,US
 64.4.23.151	Microsoft Corporation,US
 185.31.17.175	Fastly Frankfurt 1 Operations,DE
@@ -628,17 +658,17 @@ ff02::1:3	Private Use
 64.4.23.157	Microsoft Corporation,US
 54.75.254.29	Amazon Technologies Inc.,US
 95.54.249.11	OJSC "North-West Telecom" Murmansk branch of the OJSC "North-West Telecom" 82a Lenina av., 183038, Murmansk, Russia,RU
-2404:6800:4006:800::200e	Google IPv6 address block in AP,AU
-213.129.83.155	
+37.195.228.87	subnet 37.195.224-231 ethernet pool,RU
 187.1.141.120	IPV6 Internet Ltda,BR
-200.119.236.86	Gtd Internet S.A.,CL
+147.32.84.170	Prague,CZ
 187.161.170.242	Television Internacional, S.A. de C.V.,MX
 189.40.75.157	TIM CELULAR S.A.,BR
 217.31.54.24	Gemius s.r.o. Customer serverhosting farm in Prague,CZ
 221.179.156.39	China Mobile Communications Corporation Mobile Communications Network Operator in China Internet Service Provider in China,CN
-23.23.104.251	Amazon.com, Inc.,US
+ff02::1:ff00:fa5	Private Use
 203.92.62.46	CITYCOM NETWORKS PVT LTD 3rd Floor, Plot No. 21-22 Udyog Vihar Phase-IV Gurgaon (Haryana) PIN 122015 Phase III,IN
 195.212.29.92	Network of IGN (IBM) IGA Arch. and Design GB,GB
+54.83.25.6	Amazon Technologies Inc.,US
 23.62.237.57	Akamai Technologies, Inc.,US
 107.21.201.183	Amazon.com, Inc.,US
 54.192.99.217	Amazon Technologies Inc.,US
@@ -646,22 +676,24 @@ ff02::1:3	Private Use
 108.61.190.222	Vultr Holdings, LLC,DE
 94.124.105.24	Miroslav Lachman - servers,CZ
 68.169.52.10	Strategic Systems Consulting,US
+195.113.214.230	CESNET, z.s.p.o. Prague 6,CZ
 65.52.221.195	Microsoft Corporation,US
 197.37.90.31	TE Data,EG
 70.86.99.36	SoftLayer Technologies Inc.,US
 125.63.63.14	Network Presence,AU
+77.75.76.46	Seznam.cz,CZ
 111.221.74.13	Microsoft Microsoft Corp, Singapore,SG
 79.107.110.182	Evergy S.A.,GR
 107.22.214.64	Amazon.com, Inc.,US
-103.31.7.34	CloudFlare, Inc. 101 Townsend Street, San Francisco CA 94107,US
 2606:2800:133:206e:1315:22a5:2006:24fd	MCI Communications Services, Inc. d/b/a Verizon Business,US
-107.22.215.99	Amazon.com, Inc.,US
+204.154.94.81	Evernote Corporation.,US
 fe80::294d:3ea3:b53c:c77f	Private Use
 54.195.240.229	Amazon Technologies Inc.,US
 107.178.108.52	Input Output Flood LLC,US
 37.26.65.200	ATI-KOS IP Range used by Fiberlink,AL
 115.87.193.166	TRUEHISPEED,TH
-157.55.56.171	Microsoft Corporation,US
+77.75.73.33	Seznam.cz, a.s.,CZ
+2a00:1450:4005:809::100f	EU metro frontend,IE
 157.55.56.173	Microsoft Corporation,US
 200.120.214.150	VTR BANDA ANCHA S.A.,CL
 157.55.56.176	Microsoft Corporation,US
@@ -672,22 +704,23 @@ fd2d:ab8c:225:0:b507:b942:265c:2f2	Private Use
 84.106.121.45	Ziggo Consumers,NL
 2a02:26f0:20:199::eed	Akamai Technologies,EU
 95.222.105.235	Unitymedia dynamic customer IP pool,DE
-91.105.79.24	Address pool for LTC-HOME customers Riga,LV
+31.28.58.144	AIST ISP, PPTP (physical persons),RU
 84.72.200.179	Cablecom GmbH DHCP Scopes,CH
 173.194.113.176	Google Inc.,US
 47.201.32.60	Frontier Communications Corporation,US
 66.117.29.34	Adobe Systems Inc.,US
 78.140.164.29	Fozzy Inc. 1000 N West Street., Suite 1200 Wilmington, DE 19801,US
 152.3.140.5	Duke University,US
-141.101.115.15	CloudFlare, Inc.,US
+ff02::1:ff90:cb4a	Private Use
 111.221.77.153	Microsoft Microsoft Corp, Singapore,SG
-173.194.35.74	Google Inc.,US
-111.221.77.151	Microsoft Microsoft Corp, Singapore,SG
-2a00:1450:4009:800::2003	EU metro frontend,IE
-ff02::1:ff00:7f6	Private Use
+195.113.214.221	CESNET, z.s.p.o. Prague 6,CZ
+111.221.77.157	Microsoft Microsoft Corp, Singapore,SG
+107.22.215.99	Amazon.com, Inc.,US
 111.221.77.155	Microsoft Microsoft Corp, Singapore,SG
-46.236.9.36	E-digital,GB
+147.32.84.189	Prague,CZ
+77.75.73.9	Seznam.cz, a.s.,CZ
 128.2.204.54	Carnegie Mellon University,US
+157.55.56.146	Microsoft Corporation,US
 192.168.1.130	Private Use
 23.62.237.25	Akamai Technologies, Inc.,US
 193.170.225.66	VC-GRAZ, "Virtual Campus Graz" network part of UDN-Graz (University Data Network Graz),AT
@@ -701,24 +734,22 @@ ff02::1:ff00:7f6	Private Use
 95.172.94.46	Quantcast Route,US
 37.45.104.97	BELTELECOM VITEBSK branch BYFLY(tm) dynamic pools Republic of Belarus,BY
 176.34.246.218	DUB6 EC2,NL
-192.189.25.143	HYDRABURX CORPORATION,US
+5.144.130.38	Hostiran Network,IR
 31.28.124.40	VPN (PPPoE) customers Lesnoy Sverdlovsk reg. "Interra" Ltd.,RU
 ff02::1:ff37:5ebb	Private Use
-217.29.220.255	Safricom-Telecommunications,ZA
-73.209.38.76	Comcast IP Services, L.L.C.,US
+74.125.232.203	Google Inc.,US
+5.20.118.19	Cgates, UAB Internet services,LT
 190.93.245.15	CloudFlare Latin America S.R.L,CR
 23.23.105.169	Amazon.com, Inc.,US
 95.58.41.243	JSC Kazakhtelecom, Mangystau Affiliate Metro Ethernet Network,KZ
-212.58.244.66	BBC Telstra London Hosting Centre ******************************************************* * In case of any problems with users of this address * space (spam, attacks, illegal activity, etc) please * email abuse@bbc.co.uk with full logfile entries,GB
+23.62.237.30	Akamai Technologies, Inc.,US
 23.62.237.23	Akamai Technologies, Inc.,US
 198.185.19.46	LexisNexis,US
 46.36.158.196	ALMANET MetroEthernet clients in Oskemen,KZ
 109.22.22.147	Dynamic pools,FR
 5.228.83.233	NCNET Broadband customers,RU
 23.62.237.39	Akamai Technologies, Inc.,US
-83.168.173.226	Bratislava,SK
-77.23.100.211	Kabel Deutschland Breitband Customer 17,DE
-2a00:1450:4014:80a::100b	EU metro frontend,IE
+76.74.254.120	ServerBeach,US
 107.20.167.240	Amazon.com, Inc.,US
 177.12.164.99	IPV6 Internet Ltda,BR
 92.220.169.63	Altibox Residential Customer Linknets,NO
@@ -727,7 +758,9 @@ ff02::1:ff37:5ebb	Private Use
 ff02::1:ffc5:e99d	Private Use
 ff02::1:ff77:f6f3	Private Use
 103.30.245.114	PT. Cybertechtonic Pratama Corporate / Direct Member IDNIC Tifa Building 6th floor Jl. Kuningan Barat 26, 6th floor, suite 606 Jakarta Selatan, DKI Jakarta 12710,ID
+74.125.232.202	Google Inc.,US
 192.168.1.255	Private Use
+2a00:1450:4014:80a::100b	EU metro frontend,IE
 95.172.94.59	Quantcast Route,US
 188.117.192.130	RS-IKOMLINE-CUST-CABLE-DYN,RS
 207.24.42.180	ANS Communications, Inc,US
@@ -741,23 +774,25 @@ ff02::1:ff00:974	Private Use
 fe80::4:96ff:fe83:9263	Private Use
 77.75.79.9	Seznam.cz,CZ
 107.22.225.24	Amazon.com, Inc.,US
+5.35.68.182	LLC "Multiscan",RU
 207.35.75.110	Bell Canada,CA
 85.232.230.228	Gemius SA Postepu 18B 02-676 Warszawa,PL
 77.75.77.9	Seznam.cz,CZ
 37.55.238.66	#NCC#2012011594 Approved IP assignment,UA
-2607:f8b0:4007:808::2003	Google Inc.,US
+ff02::1:ff01:fcd7	Private Use
 ff02::1:ffae:f4cb	Private Use
-95.34.153.116	Trondheim Heimdalsbyen, Norway,NO
+10.192.123.114	Private Use
 192.168.1.139	Private Use
 ff02::fb	Private Use
-ff02::1:ff00:ab7	Private Use
+ff02::1:3	Private Use
 89.176.244.113	UPC Ceska republika, a.s.,CZ
 45.58.74.33	Dropbox, Inc.,US
 206.165.250.91	Level 3 Communications, Inc.,US
 67.225.77.137	Saskatchewan Telecommunications,CA
+147.32.86.42	Prague,CZ
 111.221.74.47	Microsoft Microsoft Corp, Singapore,SG
 111.221.74.44	Microsoft Microsoft Corp, Singapore,SG
-134.60.222.32	Ulm, Germany,DE
+111.221.74.45	Microsoft Microsoft Corp, Singapore,SG
 80.64.49.12	Mendeley,GB
 80.64.49.11	Mendeley,GB
 93.182.21.239	Kvidex-Telecom Ltd,RU
@@ -766,27 +801,30 @@ ff02::1:ff00:ab7	Private Use
 213.199.179.151	Microsoft Internet Data Center,IE
 213.199.179.157	Microsoft Internet Data Center,IE
 ff02::1:ff20:bff8	Private Use
-186.109.81.79	ARNET - ADSL - IPFIJA,AR
+131.155.224.81	P.O. Box 513 5600 MD Eindhoven,NL
 ff02::1:ff97:2325	Private Use
+74.125.232.223	Google Inc.,US
 213.199.179.159	Microsoft Internet Data Center,IE
-80.112.182.222	Stichting DUWO Delft,NL
+2a00:1450:4014:80a::100e	EU metro frontend,IE
 173.194.35.77	Google Inc.,US
-173.194.35.76	Google Inc.,US
+173.194.44.239	Google Inc.,US
 173.194.35.75	Google Inc.,US
-ff02::1:ff10:cf3b	Private Use
-54.230.45.74	Amazon Technologies Inc.,US
+88.146.119.120	THINline interactive s.r.o.,CZ
+147.32.84.130	Prague,CZ
 ff02::1:ff19:1034	Private Use
 2a00:1450:4014:80b::1009	EU metro frontend,IE
+216.38.220.23	ViaWest,US
 112.124.3.15	Aliyun Computing Co., LTD 5F, Builing D, the West Lake International Plaza of S&T No.391 Wen'er Road, Hangzhou, Zhejiang, China, 310099,CN
-178.63.212.146	
+147.32.87.249	Prague,CZ
+178.132.156.5	JSC "Moldtelecom" S.A. Chisinau, Moldova,MD
 157.56.52.44	Microsoft Corporation,US
-207.97.227.245	Rackspace Hosting,US
-2a00:1450:4014:80b::1006	EU metro frontend,IE
+80.112.182.222	Stichting DUWO Delft,NL
 54.208.247.222	Amazon Technologies Inc.,US
 157.55.56.153	Microsoft Corporation,US
 99.225.171.149	Rogers Communications Canada Inc.,CA
+ff02::1:ffee:80be	Private Use
 ff02::1:ff00:f69	Private Use
-77.222.56.178	Spaceweb hosting provider,RU
+217.29.220.255	Safricom-Telecommunications,ZA
 54.209.168.250	Amazon Technologies Inc.,US
 157.55.130.145	Microsoft Corporation,US
 192.185.210.237	WEBSITEWELCOME.COM,US
@@ -798,7 +836,7 @@ ff02::1:ff00:f69	Private Use
 162.159.240.204	Cloudflare, Inc.,US
 fd2d:ab8c:225::1	Private Use
 108.161.189.3	netDNA,US
-195.219.57.34	ALUCINATE  NETWORKS C.B.,ES
+157.55.56.171	Microsoft Corporation,US
 50.16.223.71	Amazon.com, Inc.,US
 67.215.246.203	QuadraNet, Inc,US
 147.32.209.228	Prague,CZ
@@ -806,7 +844,7 @@ fd2d:ab8c:225::1	Private Use
 88.100.183.25	XDSL NETWORK-ADSL,CZ
 147.32.208.3	Prague,CZ
 118.98.221.68	Pustekkom Kementerian Pendidikan Nasional Jl. RE Martadinata, Cipayung, Ciputat Tangerang, Banten,ID
-84.18.180.87	
+195.219.57.34	ALUCINATE  NETWORKS C.B.,ES
 137.97.218.206	Reliance Jio Infocomm Limited,IN
 10.0.2.105	Private Use
 67.215.246.10	QuadraNet, Inc,US
@@ -815,24 +853,25 @@ fd2d:ab8c:225::1	Private Use
 195.113.214.237	CESNET, z.s.p.o. Prague 6,CZ
 195.113.214.236	CESNET, z.s.p.o. Prague 6,CZ
 176.31.98.221	OVH SAS Dedicated servers http://www.ovh.com,FR
-195.113.214.230	CESNET, z.s.p.o. Prague 6,CZ
+23.23.102.175	Amazon.com, Inc.,US
 195.132.217.126	End-User NUMERICABLE,FR
 2a00:1450:4001:80d::100e	EU metro frontend,IE
-2a00:1450:400c:c08::bd	EU metro frontend,IE
+83.168.173.226	Bratislava,SK
 2a00:1450:4010:c04::5e	EU metro frontend,IE
 54.235.136.66	Amazon Technologies Inc.,US
 95.174.205.74	New Telesystems Customers,RU
-195.113.214.251	CESNET, z.s.p.o. Prague 6,CZ
 2607:f8b0:4000:804::101f	Google Inc.,US
 2a00:1450:4003:807::2003	EU metro frontend,IE
 137.117.177.33	Microsoft Corp,US
 173.194.35.89	Google Inc.,US
+212.111.2.170	INTERNEXT 2000 Vsetin,CZ
 45.32.215.140	Choopa, LLC,US
 157.55.130.143	Microsoft Corporation,US
 ff02::1:ff1e:d1e1	Private Use
-216.38.220.22	ViaWest,US
+76.13.114.90	Yahoo! Inc.,US
+2a00:1450:400c:c08::bd	EU metro frontend,IE
 137.97.186.126	Reliance Jio Infocomm Limited,IN
-54.192.99.113	Amazon Technologies Inc.,US
+ff02::1:ff00:3a7	Private Use
 130.15.100.14	Queen's University,CA
 24.247.203.174	Charter Communications,US
 78.40.108.39	78.40.108.0/25,KZ
@@ -859,89 +898,100 @@ ff02::1:ff00:280	Private Use
 80.94.76.5	Assigned to customer_id: 1101 NovaGroup Dedicated platform,NL
 31.177.64.204	RU-SERVICE Ltd ISP,RU
 54.194.185.120	Amazon Technologies Inc.,US
-173.194.44.234	Google Inc.,US
+147.32.84.229	Prague,CZ
 173.194.70.84	Google Inc.,US
 162.144.252.210	Unified Layer,US
 93.84.198.221	BELTELECOM MOGILEV branch BYFLY(tm) dynamic pools Republic of Belarus,BY
+141.101.115.15	CloudFlare, Inc.,US
 134.2.194.165	Eberhard Karls Universitaet Tuebingen Eberhard-Karls-Universitaet Tuebingen, Germany,DE
 192.184.82.55	RamNode LLC,US
-95.180.72.105	RS-IKOMLINE-CUST-DYN-17,RS
+216.92.186.217	pair Networks,US
 187.5.218.201	GPSNet Provedor de Acesso a Redes de Comunicao,BR
+208.96.18.237	DataPipe, Inc.,US
 83.167.252.118	Master Internet s.r.o. Serverhousing 4D/Prague,CZ
 192.163.239.60	Unified Layer,US
 192.30.252.129	GitHub, Inc.,US
 95.101.45.16	Akamai Technologies,EU
 176.38.67.34	Lanet Network Ltd,UA
-2a00:1450:4001:808::1003	EU metro frontend,IE
+5.167.161.72	CJSC "ER-Telecom Holding" Kirov branch Kirov, Russia PPPoE individual customers,RU
 5.13.194.180	RCS & RDS Residential City: Galati,RO
 2a00:1450:400d:807::200d	EU metro frontend,IE
-2a00:1450:400d:807::200e	EU metro frontend,IE
+217.12.199.150	Provider Local Internet Registry,UA
 2a00:1450:4001:808::1005	EU metro frontend,IE
 147.32.80.88	Prague,CZ
+2.20.182.17	Akamai Technologies,AT
 188.220.67.230	Sky UK Limited,GB
 70.118.199.66	Time Warner Cable Internet LLC,US
 2a00:1450:4014:80b::1018	EU metro frontend,IE
-217.12.199.150	Provider Local Internet Registry,UA
+2a00:1450:4014:80b::1019	EU metro frontend,IE
 190.93.245.58	CloudFlare Latin America S.R.L,CR
 190.93.247.58	CloudFlare Latin America S.R.L,CR
 2a00:1450:4014:80b::1016	EU metro frontend,IE
 2a00:1450:4014:80b::1017	EU metro frontend,IE
-54.230.8.157	Amazon Technologies Inc.,US
+ff02::c	Private Use
 98.115.28.34	MCI Communications Services, Inc. d/b/a Verizon Business,US
 77.139.194.82	for residential Cable and xDSL subscribers,IL
 181.167.158.224	CABLEVISION S.A.,AR
 69.195.98.100	Unified Layer,US
 78.102.228.2	UPC Ceska republika, a.s.,CZ
+60.50.59.206	TMNST,MY
 147.32.83.53	Prague,CZ
 ff02::1:ffc6:1d14	Private Use
 207.7.88.47	PrivateSystems Networks TX,US
 85.13.138.126	Neue Medien Muennich GmbH,DE
 200.41.119.92	Info Line World Tel Fax Electronics C.A.,VE
 176.101.230.137	M-Line,RU
-147.32.192.3	Prague,CZ
+fe80::4a8:b1f0:5819:1034	Private Use
 147.32.192.2	Prague,CZ
 46.246.85.210	Frootynet Sweden,SE
 149.202.30.123	OVH Static IP,FR
 156.247.27.44	CloudInnovation infrastructure,ZA
 64.4.23.141	Microsoft Corporation,US
-111.221.77.157	Microsoft Microsoft Corp, Singapore,SG
+2620:0:862:ed1a::2:b	Wikimedia Foundation Inc.,US
 79.135.195.69	ICN Ltd.,UA
 5.231.62.18	GHOSTnet Network used for VPS Hosting Services Assigned 20120914,DE
+ff02::1:ff00:7f6	Private Use
 117.201.12.216	Broadband Multiplay Project, O/o DGM BB, NOC BSNL Bangalore,IN
 2a00:1450:4014:80b::101e	EU metro frontend,IE
 2a00:1450:4014:80b::101f	EU metro frontend,IE
 5.14.125.241	RCS & RDS Residential City: Constanta,RO
 66.96.147.113	The Endurance International Group, Inc.,US
 87.150.192.198	Deutsche Telekom AG,DE
-67.232.77.17	Embarq Corporation,US
+77.75.72.46	Seznam.cz,CZ
+46.236.9.36	E-digital,GB
 116.30.185.20	CHINANET Guangdong province network China Telecom No.31,jingrong street Beijing 100032,CN
-192.168.1.121	Private Use
+ff02::1:ffd0:42d3	Private Use
 54.240.162.116	Amazon Technologies Inc.,US
-95.109.118.214	Dals-ED Edshus Edshus E-LAN,SE
+224.0.0.251	Private Use
 224.0.0.252	Private Use
+ff02::1:ffba:1f64	Private Use
 64.4.23.167	Microsoft Corporation,US
 2a00:1450:400d:807::2003	EU metro frontend,IE
-5.20.118.19	Cgates, UAB Internet services,LT
+64.4.23.160	Microsoft Corporation,US
+77.222.56.178	Spaceweb hosting provider,RU
 109.62.167.139	OJSC Rostelecom, Belgorod branch ex-netname:        RU-BELSVYAZ-NET,RU
+147.32.84.109	Prague,CZ
 199.16.156.104	Twitter Inc.,US
 103.31.7.33	CloudFlare, Inc. 101 Townsend Street, San Francisco CA 94107,US
 216.38.192.142	ViaWest,US
 195.168.10.171	GTS Datacenter Customers GTS Slovakia, a.s., Einsteinova 24, Bratislava,SK
 79.131.184.56	Multiprotocol Service Provider to other ISP's and End Users located in Greece and having nodes in 63 cities,GR
 50.64.16.140	Shaw Communications Inc.,CA
+91.105.79.24	Address pool for LTC-HOME customers Riga,LV
 66.96.147.159	The Endurance International Group, Inc.,US
-91.225.248.80	
 88.140.176.92	Dynamic pools,FR
 199.16.156.102	Twitter Inc.,US
 8.8.4.4	Level 3 Communications, Inc.,US
+173.194.35.76	Google Inc.,US
 67.231.226.75	StratusWave Communications,US
 190.93.240.118	CloudFlare Latin America S.R.L,CR
 190.93.244.58	CloudFlare Latin America S.R.L,CR
-89.233.204.190	ViaEuropa Norrkoping,SE
+2a00:1450:4009:800::2003	EU metro frontend,IE
 213.89.54.155	Com Hem Stockholm customer broadband access,SE
 2a00:1450:4007:808::100f	EU metro frontend,IE
+147.32.86.179	Prague,CZ
 37.76.175.36	OJSC Rostelecom, Tambov branch ex-netname:        TMBNET,RU
-64.4.23.160	Microsoft Corporation,US
+46.55.21.248	JSC "Moldtelecom" S.A. Chisinau, Moldova,MD
 192.185.160.67	WEBSITEWELCOME.COM,US
 109.193.53.243	Kabel Baden-Wuerttemburg GmbH & Co. KG,DE
 147.32.84.36	Prague,CZ
@@ -951,25 +1001,30 @@ ff02::1:ffc6:1d14	Private Use
 54.243.202.165	Amazon Technologies Inc.,US
 54.230.97.235	Amazon Technologies Inc.,US
 2a00:1450:4005:808::1012	EU metro frontend,IE
+ff02::1:ff10:cf3b	Private Use
 66.235.139.206	Adobe Systems Inc.,US
 54.235.184.116	Amazon Technologies Inc.,US
-ff02::1:ff1b:7767	Private Use
+173.236.180.76	New Dream Network, LLC,US
 23.21.70.163	Amazon.com, Inc.,US
 103.15.53.231	Royal Net Cable Pvt Ltd,IN
 87.230.41.130	Host Europe GmbH,DE
 98.143.146.7	QuadraNet, Inc,US
+00:00:00:00:00:00	Not an IP
 157.55.56.160	Microsoft Corporation,US
-ff02::1:ffba:1f64	Private Use
+207.97.227.245	Rackspace Hosting,US
 157.55.56.167	Microsoft Corporation,US
 85.207.12.62	Konica Minolta,Brno,CZ
+95.34.153.116	Trondheim Heimdalsbyen, Norway,NO
+77.78.99.21	Panacom Group s.r.o.,CZ
 5.166.254.107	Nlink Telecommunications LLC,RU
 177.69.167.245	ALGAR TELECOM S/A,BR
 fe80::121f:74ff:fe0e:d37	Private Use
-ff02::1:ffce:e387	Private Use
+54.230.8.157	Amazon Technologies Inc.,US
 2a00:1450:4014:80a::1018	EU metro frontend,IE
 185.5.9.209	mywire Datentechnik GmbH mywire cpe network gw-f-01,DE
 36.66.107.162	PT TELKOM INDONESIA                 Menara Multimedia Lt.7                 Jl. Kebon sirih No.12                 JAKARTA,ID
-178.117.222.67	Telenet N.V. Residentials,BE
+ff02::1:ff00:ab7	Private Use
+209.85.149.100	Google Inc.,US
 54.225.146.15	Amazon Technologies Inc.,US
 189.47.102.235	TELEFNICA BRASIL S.A,BR
 8.8.8.8	Level 3 Communications, Inc.,US
@@ -990,26 +1045,27 @@ fd2d:ab8c:225:0:f575:44d7:5a0b:2224	Private Use
 ff02::1:ff60:f47b	Private Use
 ff02::1:ff4d:ba93	Private Use
 5.198.129.128	Mlada fronta - network 1,CZ
-178.132.156.5	JSC "Moldtelecom" S.A. Chisinau, Moldova,MD
+23.23.104.251	Amazon.com, Inc.,US
 103.31.6.184	CloudFlare, Inc. 101 Townsend Street, San Francisco CA 94107,US
 80.78.244.170	Reg.Ru Hosting,RU
 109.252.105.1	Moscow Local Telephone Network (OAO MGTS),RU
-216.92.186.217	pair Networks,US
-2a00:1450:4005:809::1012	EU metro frontend,IE
-ff02::1:ff90:cb4a	Private Use
+95.180.72.105	RS-IKOMLINE-CUST-DYN-17,RS
+ff02::1:ff2a:7fb1	Private Use
+185.82.216.143	ITL Sofia Datacenter Network,BG
 68.232.35.121	MCI Communications Services, Inc. d/b/a Verizon Business,US
 fe80::3d1a:8135:9ed5:db1c	Private Use
 165.169.139.204	Le Port XA1 Bloc 2,RE
+192.189.25.143	HYDRABURX CORPORATION,US
 2.39.95.192	IP addresses assigned to VF DSL customers,IT
 177.192.255.220	CLARO S.A.,BR
-2a00:1450:4014:80a::1016	EU metro frontend,IE
+137.117.90.63	Microsoft Corp,US
 2001:718:2:1663:b046:67ae:481a:4704	Czech Technical University Prague,CZ
-173.236.180.76	New Dream Network, LLC,US
-173.194.122.26	Google Inc.,US
-2a00:1450:4005:809::1017	EU metro frontend,IE
+173.194.44.234	Google Inc.,US
+173.194.70.132	Google Inc.,US
+173.194.35.74	Google Inc.,US
 62.212.72.211	LeaseWeb Netherlands B.V.,NL
 95.172.94.62	Quantcast Route,US
-157.48.141.20	Reliance Jio infocomm ltd,IN
+95.172.94.65	Quantcast Route,US
 109.91.54.1	Unitymedia dynamic customer IP pool,DE
 37.214.35.182	BELTELECOM MOGILEV branch BYFLY(tm) dynamic pools Republic of Belarus,BY
 47.18.17.114	Optimum WiFi,US
@@ -1022,7 +1078,7 @@ fe80::3d1a:8135:9ed5:db1c	Private Use
 184.169.131.141	Amazon.com, Inc.,US
 105.107.66.81	Adresses IP dynamic Tiziouzou,DZ
 74.125.227.143	Google Inc.,US
-23.62.237.30	Akamai Technologies, Inc.,US
+173.194.122.26	Google Inc.,US
 ff02::1:ff75:80ea	Private Use
 64.207.134.54	Media Temple, Inc.,US
 213.25.134.75	PHU UniNET Joanna Mioduszewska ul. Sienkiewicza 1 19-230 Szczuczyn,PL
@@ -1032,25 +1088,29 @@ ff02::1:fffd:b32c	Private Use
 83.143.202.15	ISP ReedLan,RU
 109.79.98.45	Vodafone ISP,IE
 31.209.139.249	xDSL Customers,IS
+49.99.52.57	NTT DOCOMO,INC. Sannno Park Tower Bldg.11-1 Nagatacho 2-chome hiyoda-ku,Tokyo Japan,JP
 98.222.22.136	Comcast Cable Communications, LLC,US
+205.188.10.240	AOL Inc.,US
 192.168.1.122	Private Use
 fd2d:ab8c:225:0:b971:46cc:85f9:5025	Private Use
 23.23.215.82	Amazon.com, Inc.,US
-ff02::1:ffd0:42d3	Private Use
-2a00:1450:4001:80f::1004	EU metro frontend,IE
+147.32.85.21	Prague,CZ
+103.31.7.34	CloudFlare, Inc. 101 Townsend Street, San Francisco CA 94107,US
 23.63.70.150	Akamai Technologies, Inc.,US
+147.32.85.26	Prague,CZ
 192.168.1.128	Private Use
 111.221.74.17	Microsoft Microsoft Corp, Singapore,SG
 46.9.204.182	Oslo Holmlia, Norway,NO
 2a00:1450:4005:809::1018	EU metro frontend,IE
-ff02::1:ffee:80be	Private Use
+130.204.30.6	Blizoo Media and Broadband EAD Blizoo Docsys,Sofia Moskom,BG
 178.33.82.5	OVH Static IP,FR
 95.172.94.19	Quantcast Route,US
 147.32.83.105	Prague,CZ
 2a00:1450:4005:809::1011	EU metro frontend,IE
 91.121.222.31	OVH SAS Dedicated servers http://www.ovh.com,FR
 2a00:1450:4005:809::1013	EU metro frontend,IE
-ff02::1:ff2a:7fb1	Private Use
+2a00:1450:4005:809::1012	EU metro frontend,IE
+64.12.68.229	AOL Inc.,US
 2a00:1450:4005:809::1014	EU metro frontend,IE
 ff02::1:ff95:f857	Private Use
 182.184.70.228	USF DSLAM North,PK
@@ -1061,7 +1121,8 @@ ff02::1:ff95:f857	Private Use
 198.252.206.21	Stack Exchange, Inc.,US
 213.199.179.145	Microsoft Internet Data Center,IE
 213.199.179.146	Microsoft Internet Data Center,IE
-49.99.52.57	NTT DOCOMO,INC. Sannno Park Tower Bldg.11-1 Nagatacho 2-chome hiyoda-ku,Tokyo Japan,JP
+2607:f8b0:4007:808::2003	Google Inc.,US
+2a00:1450:4014:80a::1016	EU metro frontend,IE
 213.199.179.149	Microsoft Internet Data Center,IE
-130.204.30.6	Blizoo Media and Broadband EAD Blizoo Docsys,Sofia Moskom,BG
+109.203.19.190	Broadband Access,NO
 ff02::1:ff0b:2224	Private Use

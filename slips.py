@@ -21,9 +21,6 @@ import random
 
 
 version = '0.4'
-global switch
-switch = True
-
 
 
 def timing(f):
@@ -36,8 +33,8 @@ def timing(f):
         return ret
     return wrap
 
-#Tuple
-class Tuple(object):
+#Connection
+class Connection(object):
     """ The class to simply handle tuples """
     def __init__(self, tuple4):
         self.id = tuple4
@@ -172,7 +169,7 @@ class Tuple(object):
         self.compute_state()
         self.compute_symbols()
         if self.debug > 4:
-            print '\tTuple {}. Amount of flows so far: {}'.format(self.get_id(), self.amount_of_flows)
+            print '\tConnection {}. Amount of flows so far: {}'.format(self.get_id(), self.amount_of_flows)
 
     def compute_periodicity(self):
         # If either T1 or T2 are False
@@ -407,7 +404,7 @@ class Processor(multiprocessing.Process):
             # We already have this connection
         except KeyError:
             # First time for this connection
-            tuple = Tuple(tuple4)
+            tuple = Connection(tuple4)
             tuple.set_verbose(self.verbose)
             tuple.set_debug(self.debug)
             self.tuples[tuple4] = tuple
@@ -424,24 +421,20 @@ class Processor(multiprocessing.Process):
                 print cyan('Time Window Started: {}, finished: {}. ({} connections)'.format(self.slot_starttime, self.slot_endtime, len(self.tuples_in_this_time_slot)))
             for tuple4 in self.tuples:
                 tuple = self.get_tuple(tuple4)
-                """
-                    # Print the tuple and search its whois only if it has more than X amount of letters.
-                    # This was the old way of stopping the system of analyzing tuples with less than amount of letters. Now should not be done here.
-                    # if tuple.amount_of_flows > self.amount and tuple.should_be_printed:
-                    if tuple.should_be_printed:
-                        if not tuple.desc and self.get_whois:
-                            tuple.get_whois_data()
-                        print tuple.print_tuple_detected()
-                    # Clear the color because we already print it
-                    if tuple.color == red:
-                        tuple.set_color(yellow)
-                    # After printing the tuple in this time slot, we should not print it again unless we see some of its flows.
-                    if tuple.should_be_printed:
-                        tuple.dont_print()
-                """
+                
+                # Print the tuple and search its whois only if it has more than X amount of letters.
+                # This was the old way of stopping the system of analyzing tuples with less than amount of letters. Now should not be done here.
+                # if tuple.amount_of_flows > self.amount and tuple.should_be_printed:
+                if tuple.should_be_printed and tuple.detected_label != False:
+                    print tuple.print_tuple_detected()
+                # Clear the color because we already print it
+                if tuple.color == red:
+                    tuple.set_color(yellow)
+                # After printing the tuple in this time slot, we should not print it again unless we see some of its flows.
+                if tuple.should_be_printed:
+                    tuple.should_be_printed = False
             # Process all the addresses in this time window
-            self.ip_handler.process_timewindow(self.slot_starttime, self.slot_endtime, self.detection_threshold)
-
+            self.ip_handler.process_timewindow(self.slot_starttime, self.slot_endtime)
             """
             # After each timeslot finishes forget the tuples that are too big. This is useful when a tuple has a very very long state that is not so useful to us. Later we forget it when we detect it or after a long time.
             ids_to_delete = []
@@ -492,6 +485,7 @@ class Processor(multiprocessing.Process):
         try:
             if not self.dontdetect:
                 (detected, label, statelen) = __markov_models__.detect(tuple, self.verbose, self.debug)
+                tuple.should_be_printed = True
                 if detected:
                     # Change color
                     tuple.set_color(magenta)
@@ -599,7 +593,7 @@ class Processor(multiprocessing.Process):
 # Main
 ####################
 def signal_handler(signal, frame):
-    print "\nInterrupting slips"
+    print magenta("\nInterrupting slips")
     #signal will be processed in the child process
     pass
         
@@ -620,7 +614,7 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--sound', help='Play a small sound when a periodic connections is found.', action='store_true', default=False, required=False)
     parser.add_argument('-t', '--threshold', help='Threshold for detection with IPHandler', action='store', default=0.002, required=False, type=float)
     parser.add_argument('-W', '--whitelist', help="File with the IP addresses to whitelist. One per line.", action='store', required=False)
-    parser.add_argument('-c', '--classifier', help="File where serialized classifier.", action='store',required=False, default="rf_classifier.pickle", type=str)
+    parser.add_argument('-c', '--classifier', help="File where serialized classifier.", action='store',required=False, default="classifier.pickle", type=str)
 
     args = parser.parse_args()
 
