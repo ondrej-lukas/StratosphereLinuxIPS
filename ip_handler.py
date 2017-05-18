@@ -3,16 +3,6 @@
 # See the file 'LICENSE' for copying permission.
 #Author: Ondrej Lukas - ondrej.lukas95@gmail.com, lukasond@fel.cvut.cz
 
-"""
-How is the verdict per IP computed?
-Firstly result_per_connection() function is called to count both all occurences and malicious occurences of each tuple in selected time window.
-Return value of result_per_connection() is tuple (number of malicous occurences, number of all occurences). Next step is counting a weighted score of the IP in selected timewindow.
-Function get_weighted_score() is used. First step is to sum values over all  tuples  (get_result_per_connection() is called for every  tuple). That leads to sum of tuple ratios.
-Than percentage of malicous tuples is computed. Malicious tuple is a tuple which contains at leat one connection which was labeled as malicious.
-Weighted score(WS) of IP is computed by multiplying sum of tuple ratios with percetage of malicious tuples. This value is stored in the tw_weigthed_scores list. After that, verdict can be computed.
-For that sliding detection window (SDW) is used. If width of SDW is N, mean of last N weighted scores is compared to threshold.
-If mean od N last WSs is equal or bigger than threshold, IP is labeled as 'Malicious'."""
-
 from datetime import datetime
 from time import gmtime, strftime
 from colors import *
@@ -24,14 +14,52 @@ import re
 from math import *
 import csv
 
+
+from sklearn.metrics import confusion_matrix
+import itertools
+import numpy as np
+#import matplotlib.pyplot as plt
+
 #check if the log directory exists, if not, create it
 logdir_path = "./logs"
 if not os.path.exists(logdir_path):
     os.makedirs(logdir_path)
 #file for logging
 filename = logdir_path+"/" + 'log_' + datetime.now().strftime('%Y-%m-%d %H:%M:%S')+'.txt'
+DATASETNAME ="CTU-Malware-Capture-Botnet-44_only_infected"
 
+class_names = ["Malicious","Normal"]
+INFECTED = ["147.32.84.165"]
 
+"""
+def plot_confusion_matrix(cm, classes,
+                          normalize=False,
+                          title='Confusion matrix',
+                          cmap=plt.cm.Oranges):
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45)
+    plt.yticks(tick_marks, classes)
+
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
+
+    print(cm)
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, cm[i, j],
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+
+    plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+"""
 
 def timing(f):
     """ Function to measure the time another function takes."""
@@ -166,12 +194,14 @@ class IpAddress(object):
         if len(self.sdw) > sdw_size:
             self.sdw = self.sdw[1:]
         if training:
-            self.store_feature_vector((COUNTER,DATASETNAME,start_time) + current_tw_vector + sdw_vector + (LABEL,),DATASETNAME+"_datamatrix_tw_sdw.csv")
+            global COUNTER
+            self.store_feature_vector((COUNTER,DATASETNAME,self.address,str(start_time)) + current_tw_vector + sdw_vector + (LABEL,),DATASETNAME+"_datamatrix_tw_sdw.csv")
             COUNTER +=1
-        self.last_vector = current_tw_vector + sdw_vector
+        self.last_vector = current_tw_vector
         return self.last_vector
 
-    def store_feature_vector(self, vector, filename):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    def store_feature_vector(self, vector, filename): 
+        print "line:{}".format(vector[0])                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         with open(filename,'a') as csvfile:
             writer = csv.writer(csvfile,delimiter=",",quotechar='|')
             writer.writerow(vector)
@@ -236,6 +266,9 @@ class IpHandler(object):
         self.classifier = Classifier(classifier)
         self.whois_handler = WhoisHandler("WhoisData.txt")
         self.SDW_size = 12
+
+        self.test_labels = []
+        self.real_labels = []
         
                 
     def process_timewindow(self, start_time, end_time):
@@ -247,7 +280,6 @@ class IpHandler(object):
             vectors.append(address.get_features(start_time,end_time, self.SDW_size))
         #classify each IP
         results = self.classifier.classify(vectors)
-
         #process classification
         for i in range(0,len(self.active_addresses)):
             address = self.addresses[self.active_addresses[i]]
@@ -257,6 +289,11 @@ class IpHandler(object):
                 address.alerts.append(IpDetectionAlert(datetime.now(), address, vectors[i]))
             #print the result
             address.print_last_result(self.verbose, start_time, end_time, self.whois, self.whois_handler)
+            if address.address in INFECTED:
+                self.real_labels.append("Malicious")
+            else:
+                self.real_labels.append("Normal")
+            self.test_labels.append(results[i])
             #close TW in the address
             address.close_time_window()    
         #close TW
@@ -287,6 +324,10 @@ class IpHandler(object):
     def print_alerts(self):
         """ Gater all the alerts in the handler and print them"""
         detected_counter = 0
+        TP = 0
+        FN = 0
+        FP = 0
+        TN = 0
         self.whois_handler.store_whois_data_in_file()
         print '\nFinal Alerts generated:'
         f = open(filename,"w")
@@ -294,17 +335,47 @@ class IpHandler(object):
         f.write('Alerts:\n')
         for ip in self.addresses.values():
             if len(ip.alerts) > 0:
+
+                if ip.address in INFECTED:
+                    TP += 1
+                else:
+                    FP +=1
+
                 detected_counter+=1
                 print "\t - "+ ip.address
                 f.write( '\t - ' + ip.address + '\n')
                 for alert in ip.get_alerts():
                     print "\t\t" + str(alert)
                     f.write( '\t\t' + str(alert) + '\n')
+            else:
+                if ip.address in INFECTED:
+                    FN += 1
+                else:
+                    TN +=1
+
 
         s = "{} IP(s) out of {} detected as malicious.".format(detected_counter,len(self.addresses.keys()))
         f.write(s)
         print s
         f.close()
+
+
+        cnf_matrix = confusion_matrix(self.real_labels, self.test_labels)        
+        print "NEW VERSION per tw:"
+        print cnf_matrix
+        print "NEW VERSION at the end:"
+        print [[TP,FN],[FP,TN]]
+
+        """
+        np.set_printoptions(precision=2)
+        plt.figure()
+        plot_confusion_matrix(cnf_matrix, classes=class_names, title='Confusion matrix, without normalization')
+        plt.savefig('./experiments/CM_'+ DATASETNAME+'_SDW'+'.png',dpi=400, bbox_inches='tight')
+        plt.figure()
+        plot_confusion_matrix(cnf_matrix, classes=class_names, normalize=True, title='Normalized confusion matrix')
+        plt.savefig('./experiments/CM_'+ DATASETNAME+'_normalized'+'_SDW'+'.png',dpi=400, bbox_inches='tight')
+        """
+
 
 
 

@@ -22,7 +22,13 @@ import random
 
 version = '0.4'
 
-
+INFECTED = ["147.32.84.165"]
+TW_TP = 0
+TW_FN = 0
+TW_FP = 0
+TW_TN = 0
+DETECTED_IP = set()
+ALL_IP = set()
 def timing(f):
     """ Function to measure the time another function takes."""
     def wrap(*args, **kwargs):
@@ -363,7 +369,8 @@ class Connection(object):
         """
         Print the tuple. The state is the state since the last detection of the tuple. Not everything
         """
-        return('{} [{}] ({}): {}  Detected as: {}'.format(self.color(self.get_id()), self.desc, self.amount_of_flows, self.get_state_detected_last(), self.get_detected_label()))
+        #return('{} [{}] ({}): {}  Detected as: {}'.format(self.color(self.get_id()), self.desc, self.amount_of_flows, self.get_state_detected_last(), self.get_detected_label()))
+        return('{} [{}] ({}): Detected as: {}'.format(self.color(self.get_id()), self.desc, self.amount_of_flows, self.get_detected_label()))
 
     def set_color(self, color):
         self.color = color
@@ -485,8 +492,15 @@ class Processor(multiprocessing.Process):
         try:
             if not self.dontdetect:
                 (detected, label, statelen) = __markov_models__.detect(tuple, self.verbose, self.debug)
+                ALL_IP.add(tuple.src_ip)
                 tuple.should_be_printed = True
+                global TW_TN,TW_TP,TW_FP,TW_FN
                 if detected:
+                    DETECTED_IP.add(tuple.src_ip)
+                    if tuple.src_ip in INFECTED:
+                        TW_TP +=1
+                    else:
+                        TW_FP +=1
                     # Change color
                     tuple.set_color(magenta)
                     # Set the detection label
@@ -506,6 +520,10 @@ class Processor(multiprocessing.Process):
                 elif not detected:
                     # Not detected by any reason. No model matching but also the state len is too short.
                     tuple.unset_detected_label()
+                    if tuple.src_ip in INFECTED:
+                        TW_FN +=1
+                    else:
+                        TW_TN +=1
                     if self.debug > 5:
                         print 'Last flow: Not detected'
         except Exception as inst:
@@ -576,6 +594,22 @@ class Processor(multiprocessing.Process):
                             # There was an error here that we were calling self.ip_handler.print_addresses. But we should NOT call it here. The last flow was already taken care.
                             # Print final Alerts
                             self.ip_handler.print_alerts()
+                            print "ORIGINAL per TW:\tTP: {}, FN:{}, FP:{}, TN:{}".format(TW_TP, TW_FN, TW_FP, TW_TN)
+                            TP = 0
+                            TN = 0
+                            FP =0
+                            FN = 0
+                            for ip in DETECTED_IP:
+                                if ip in INFECTED:
+                                    TP +=1
+                                else:
+                                    FP +=1
+                            for  ip in INFECTED:
+                                if ip not in DETECTED_IP:
+                                    FN +=1
+                            TN = len(ALL_IP) - TP - FP -FN
+
+                            print "ORIGINAL in the end:\tTP: {}, FN:{}, FP:{}, TN:{}".format(TP, FN, FP, TN)
                         except UnboundLocalError:
                             print 'Probably empty file...'
                             # Here for some reason we still miss the last flow. But since is just one i will let it go for now.
@@ -685,6 +719,7 @@ if __name__ == '__main__':
     # Shall we wait? Not sure. Seems that not
     time.sleep(1)
     queue.put('stop')
+
     processorThread.join()
 
     print "\nExiting Stratosphere IPS."

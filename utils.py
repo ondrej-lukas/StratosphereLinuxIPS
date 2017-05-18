@@ -6,7 +6,6 @@
 import re
 import sys
 import pickle
-from math import log
 from xgboost import XGBClassifier
 import time
 import os
@@ -109,21 +108,6 @@ class Classifier(object):
             print "ERROR: Loading serialzied RandomForestClassifier from '{}' was NOT successful.".format(filename)
             exit(1)
 
-    """Return list of logarithms of likelihood ratio"""
-    def get_log_likelihood(self, vector_list):
-        likelihoods = []
-        #get probabilities
-        results = self.model.predict_proba(vector_list)
-        #compute log likelihood
-        for result in results:
-            if result[0] == 0:
-                #likelihoods.append(log(sys.float_info.min))
-                likelihoods.append(log(0.000001))
-            elif result[1] == 0:
-                likelihoods.append(log(1000000))
-            else:
-                likelihoods.append( log((result[0]/result[1]))) # possible zero division?
-        return likelihoods
 
     def classify(self,features):
         return self.model.predict(numpy.array(features))
