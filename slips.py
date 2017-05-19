@@ -369,7 +369,7 @@ class Connection(object):
         """
         Print the tuple. The state is the state since the last detection of the tuple. Not everything
         """
-        #return('{} [{}] ({}): {}  Detected as: {}'.format(self.color(self.get_id()), self.desc, self.amount_of_flows, self.get_state_detected_last(), self.get_detected_label()))
+        #return('{} [{}] ({}): {}  Detected as: {}'.format(self.color(self.get_id()), self.desc, self.amount_of_flows, self.get_state_detected_last(), self.get_detected_label()))        
         return('{} [{}] ({}): Detected as: {}'.format(self.color(self.get_id()), self.desc, self.amount_of_flows, self.get_detected_label()))
 
     def set_color(self, color):
@@ -432,8 +432,21 @@ class Processor(multiprocessing.Process):
                 # Print the tuple and search its whois only if it has more than X amount of letters.
                 # This was the old way of stopping the system of analyzing tuples with less than amount of letters. Now should not be done here.
                 # if tuple.amount_of_flows > self.amount and tuple.should_be_printed:
-                if tuple.should_be_printed and tuple.detected_label != False:
-                    print tuple.print_tuple_detected()
+                if tuple.should_be_printed:
+                    ALL_IP.add(tuple.src_ip)
+                    if tuple.detected_label != False:
+                        print tuple.print_tuple_detected()
+                        global TW_TN,TW_TP,TW_FP,TW_FN
+                        DETECTED_IP.add(tuple.src_ip)
+                        if tuple.src_ip in INFECTED:
+                            TW_TP +=1
+                        else:
+                            TW_FP +=1
+                    else:
+                        if tuple.src_ip in INFECTED:
+                            TW_FN +=1
+                        else:
+                            TW_TN +=1
                 # Clear the color because we already print it
                 if tuple.color == red:
                     tuple.set_color(yellow)
@@ -492,15 +505,8 @@ class Processor(multiprocessing.Process):
         try:
             if not self.dontdetect:
                 (detected, label, statelen) = __markov_models__.detect(tuple, self.verbose, self.debug)
-                ALL_IP.add(tuple.src_ip)
                 tuple.should_be_printed = True
-                global TW_TN,TW_TP,TW_FP,TW_FN
                 if detected:
-                    DETECTED_IP.add(tuple.src_ip)
-                    if tuple.src_ip in INFECTED:
-                        TW_TP +=1
-                    else:
-                        TW_FP +=1
                     # Change color
                     tuple.set_color(magenta)
                     # Set the detection label
@@ -520,10 +526,6 @@ class Processor(multiprocessing.Process):
                 elif not detected:
                     # Not detected by any reason. No model matching but also the state len is too short.
                     tuple.unset_detected_label()
-                    if tuple.src_ip in INFECTED:
-                        TW_FN +=1
-                    else:
-                        TW_TN +=1
                     if self.debug > 5:
                         print 'Last flow: Not detected'
         except Exception as inst:
@@ -605,7 +607,7 @@ class Processor(multiprocessing.Process):
                                 else:
                                     FP +=1
                             for  ip in INFECTED:
-                                if ip not in DETECTED_IP:
+                                if ip not in DETECTED_IP and ip in ALL_IP:
                                     FN +=1
                             TN = len(ALL_IP) - TP - FP -FN
 
