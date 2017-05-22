@@ -197,7 +197,7 @@ class IpAddress(object):
             global COUNTER
             self.store_feature_vector((COUNTER,DATASETNAME,self.address,str(start_time)) + current_tw_vector + sdw_vector + (LABEL,),DATASETNAME+"_datamatrix_tw_sdw.csv")
             COUNTER +=1
-        self.last_vector = current_tw_vector
+        self.last_vector = current_tw_vector + sdw_vector
         return self.last_vector
 
     def store_feature_vector(self, vector, filename): 
