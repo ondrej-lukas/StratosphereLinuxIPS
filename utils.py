@@ -1,7 +1,9 @@
 #!/usr/bin/python
 # This file is part of the Stratosphere Linux IPS
 # See the file 'LICENSE' for copying permission.
-#Author: Ondrej Lukas - ondrej.lukas95@gmail.com, lukasond@fel.cvut.cz
+# This file is part of the Stratosphere Linux IPS
+# See the file 'LICENSE' for copying permission.
+# Author: Ondrej Lukas - ondrej.lukas95@gmail.com, lukasond@fel.cvut.cz
 
 import re
 import sys
@@ -32,6 +34,7 @@ class WhoisHandler(object):
             pass
     
     def get_whois_data(self,ip):
+        """Return WHOIS information for the IP. If there is no match in the local file, whois module is used to search online database"""
         #do we have it in the cache?
         try:
             import ipwhois
@@ -103,11 +106,11 @@ class Classifier(object):
     def __init__(self, filename):
         self.model = None
         try:
+            #read serialized object
             self.model = pickle.load(open(filename, "rb"))
         except IOError:
-            print "ERROR: Loading serialzied RandomForestClassifier from '{}' was NOT successful.".format(filename)
+            print "ERROR: Loading serialzied classifier from '{}' was NOT successful.".format(filename)
             exit(1)
-
 
     def classify(self,features):
         return self.model.predict(numpy.array(features))

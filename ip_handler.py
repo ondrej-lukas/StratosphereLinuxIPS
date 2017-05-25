@@ -13,10 +13,7 @@ import time
 import re
 from math import *
 import csv
-
-
 from sklearn.metrics import confusion_matrix
-import itertools
 import numpy as np
 #import matplotlib.pyplot as plt
 
@@ -28,38 +25,6 @@ if not os.path.exists(logdir_path):
 filename = logdir_path+"/" + 'log_' + datetime.now().strftime('%Y-%m-%d %H:%M:%S')+'.txt'
 DATASETNAME ="CTU-Malware-Capture-Botnet-44_only_infected"
 
-class_names = ["Malicious","Normal"]
-INFECTED = ["147.32.84.165"]
-
-"""
-def plot_confusion_matrix(cm, classes,
-                          normalize=False,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Oranges):
-    plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    plt.title(title)
-    plt.colorbar()
-    tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, rotation=45)
-    plt.yticks(tick_marks, classes)
-
-    if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-        print("Normalized confusion matrix")
-    else:
-        print('Confusion matrix, without normalization')
-
-    print(cm)
-    thresh = cm.max() / 2.
-    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, cm[i, j],
-                 horizontalalignment="center",
-                 color="white" if cm[i, j] > thresh else "black")
-
-    plt.tight_layout()
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
-"""
 
 def timing(f):
     """ Function to measure the time another function takes."""
@@ -72,8 +37,7 @@ def timing(f):
     return wrap
 
 class IpAddress(object):
-    """IpAddress stores every detection and alerts """
-    #TODO: storing ip as string? maybe there is a better way?
+    """IpAddress stores information about the host. That inludes dresults from Markov Chain comparison, Alert, Whouis etc. """
     def __init__(self, address, debug=False):
         self.address = address
         self.connections = {}
@@ -105,14 +69,14 @@ class IpAddress(object):
         return self.alerts
 
     def close_time_window(self):
-        """Removes all active tuples in this tw"""
+        """Removes all active xonnections in this tw"""
         if self.debug:
             print "#Active connections in ip:{} = {}".format(self.address,len(self.active_connections))
         self.active_connections.clear()
         self.tuple_results = {}
 
     def result_per_connection(self, connection, start_time, end_time):       
-        """Compute connection ratio"""
+        """Computes connection ratio for a given connection"""
         try:
             # This counts the amount of times this tuple was detected by any model
             detected_states = 0
@@ -134,7 +98,7 @@ class IpAddress(object):
             sys.exit(1)
 
     def get_tw_vector(self, start_time, end_time):     
-
+        """Extracts features from the current time window"""
         connections = 0
         conection_ratio_sum = 0
         clean_connections = 0
@@ -167,7 +131,7 @@ class IpAddress(object):
          bad_connections/float(connections), states, detected_states,detected_states/float(states),conection_ratio_sum, conection_ratio_sum/float(connections))
 
     def get_sdw_vector(self):
-        """DESCRIPTION"""
+        """Gathers features from the Sliding Detection Window"""
         #first TW
         if len(self.sdw) == 0:
             return (0,0,0,0,0,0,0)
@@ -183,8 +147,8 @@ class IpAddress(object):
                 bad_connections += item[3]
             return (connections, clean_connections, suspicious_connections, bad_connections, clean_connections/float(connections), suspicious_connections/float(connections), bad_connections/float(connections))
 
-    def get_features(self, start_time,end_time,sdw_size, training=False):
-        """DESCRIPTION"""
+    def get_features(self, start_time, end_time,sdw_size, training=False):
+        """Extracts features needed for the classification"""
         #get vectors
         current_tw_vector = self.get_tw_vector(start_time,end_time)
         sdw_vector = self.get_sdw_vector()
@@ -201,6 +165,7 @@ class IpAddress(object):
         return self.last_vector
 
     def store_feature_vector(self, vector, filename): 
+        """Stored extracted vector of features in the given CSV file - used for training only"""
         print "line:{}".format(vector[0])                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         with open(filename,'a') as csvfile:
             writer = csv.writer(csvfile,delimiter=",",quotechar='|')
@@ -257,7 +222,7 @@ class IpAddress(object):
         
 class IpHandler(object):
     """Class which handles all IP actions for slips. Stores every IP object in the session, provides summary, statistics etc."""
-    def __init__(self, verbose, debug, whois, classifier):
+    def __init__(self, verbose, debug, whois, classifier,sdw_size=12):
         self.addresses = {}
         self.active_addresses = list()
         self.verbose = verbose
@@ -265,13 +230,10 @@ class IpHandler(object):
         self.whois = whois
         self.classifier = Classifier(classifier)
         self.whois_handler = WhoisHandler("WhoisData.txt")
-        self.SDW_size = 12
-
-        self.test_labels = []
-        self.real_labels = []
-        
-                
+        self.SDW_size = sdw_size
+                    
     def process_timewindow(self, start_time, end_time):
+        """Iterates over all active IPs gathers features for the estimator, classifies them and prints resutls"""
         #get feature vector from all active IPs
         vectors = []
         for ip in self.active_addresses:
@@ -289,11 +251,6 @@ class IpHandler(object):
                 address.alerts.append(IpDetectionAlert(datetime.now(), address, vectors[i]))
             #print the result
             address.print_last_result(self.verbose, start_time, end_time, self.whois, self.whois_handler)
-            if address.address in INFECTED:
-                self.real_labels.append("Malicious")
-            else:
-                self.real_labels.append("Normal")
-            self.test_labels.append(results[i])
             #close TW in the address
             address.close_time_window()    
         #close TW
@@ -314,6 +271,7 @@ class IpHandler(object):
         return ip
 
     def get_alerts(self):
+        """Returns alerts from all IPs stored in the handler"""
         ret = set()
         for ip in self.addresses.values():
             if len(ip.alerts) > 0:
@@ -324,10 +282,7 @@ class IpHandler(object):
     def print_alerts(self):
         """ Gater all the alerts in the handler and print them"""
         detected_counter = 0
-        TP = 0
-        FN = 0
-        FP = 0
-        TN = 0
+
         self.whois_handler.store_whois_data_in_file()
         print '\nFinal Alerts generated:'
         f = open(filename,"w")
@@ -335,46 +290,16 @@ class IpHandler(object):
         f.write('Alerts:\n')
         for ip in self.addresses.values():
             if len(ip.alerts) > 0:
-
-                if ip.address in INFECTED:
-                    TP += 1
-                else:
-                    FP +=1
-
                 detected_counter+=1
                 print "\t - "+ ip.address
                 f.write( '\t - ' + ip.address + '\n')
                 for alert in ip.get_alerts():
                     print "\t\t" + str(alert)
                     f.write( '\t\t' + str(alert) + '\n')
-            else:
-                if ip.address in INFECTED:
-                    FN += 1
-                else:
-                    TN +=1
-
-
         s = "{} IP(s) out of {} detected as malicious.".format(detected_counter,len(self.addresses.keys()))
         f.write(s)
         print s
         f.close()
-
-
-        cnf_matrix = confusion_matrix(self.real_labels, self.test_labels)        
-        print "NEW VERSION per tw:"
-        print cnf_matrix
-        print "NEW VERSION at the end:"
-        print [[TP,FN],[FP,TN]]
-
-        """
-        np.set_printoptions(precision=2)
-        plt.figure()
-        plot_confusion_matrix(cnf_matrix, classes=class_names, title='Confusion matrix, without normalization')
-        plt.savefig('./experiments/CM_'+ DATASETNAME+'_SDW'+'.png',dpi=400, bbox_inches='tight')
-        plt.figure()
-        plot_confusion_matrix(cnf_matrix, classes=class_names, normalize=True, title='Normalized confusion matrix')
-        plt.savefig('./experiments/CM_'+ DATASETNAME+'_normalized'+'_SDW'+'.png',dpi=400, bbox_inches='tight')
-        """
 
 
 

@@ -378,7 +378,7 @@ class Connection(object):
 # Process
 class Processor(multiprocessing.Process):
     """ A class process to run the process of the flows """
-    def __init__(self, queue, slot_width, get_whois, verbose, amount, dontdetect, threshold, debug, whitelist, classifier):
+    def __init__(self, queue, slot_width, get_whois, verbose, amount, dontdetect, threshold, debug, whitelist, classifier, sdw_width):
         multiprocessing.Process.__init__(self)
         self.get_whois = get_whois
         self.verbose = verbose
@@ -392,7 +392,7 @@ class Processor(multiprocessing.Process):
         self.slot_endtime = -1
         self.slot_width = slot_width
         self.dontdetect = dontdetect
-        self.ip_handler = IpHandler(self.verbose, self.debug,self.get_whois, classifier)
+        self.ip_handler = IpHandler(self.verbose, self.debug,self.get_whois, classifier,sdw_width)
         self.detection_threshold = threshold;
         self.ip_whitelist = whitelist
         #register signal for interrupting
@@ -426,33 +426,6 @@ class Processor(multiprocessing.Process):
             # Outside the slot
             if self.verbose > 1:
                 print cyan('Time Window Started: {}, finished: {}. ({} connections)'.format(self.slot_starttime, self.slot_endtime, len(self.tuples_in_this_time_slot)))
-            for tuple4 in self.tuples:
-                tuple = self.get_tuple(tuple4)
-                
-                # Print the tuple and search its whois only if it has more than X amount of letters.
-                # This was the old way of stopping the system of analyzing tuples with less than amount of letters. Now should not be done here.
-                # if tuple.amount_of_flows > self.amount and tuple.should_be_printed:
-                if tuple.should_be_printed:
-                    ALL_IP.add(tuple.src_ip)
-                    if tuple.detected_label != False:
-                        print tuple.print_tuple_detected()
-                        global TW_TN,TW_TP,TW_FP,TW_FN
-                        DETECTED_IP.add(tuple.src_ip)
-                        if tuple.src_ip in INFECTED:
-                            TW_TP +=1
-                        else:
-                            TW_FP +=1
-                    else:
-                        if tuple.src_ip in INFECTED:
-                            TW_FN +=1
-                        else:
-                            TW_TN +=1
-                # Clear the color because we already print it
-                if tuple.color == red:
-                    tuple.set_color(yellow)
-                # After printing the tuple in this time slot, we should not print it again unless we see some of its flows.
-                if tuple.should_be_printed:
-                    tuple.should_be_printed = False
             # Process all the addresses in this time window
             self.ip_handler.process_timewindow(self.slot_starttime, self.slot_endtime)
             """
@@ -476,12 +449,6 @@ class Processor(multiprocessing.Process):
             if not last_tw:
                 tuple4 = column_values[3]+'-'+column_values[6]+'-'+column_values[7]+'-'+column_values[2]
                 tuple = self.get_tuple(tuple4)
-                """
-                if self.verbose:
-                    # If this is the first time this tuple appears in this time window, print it in red.
-                    if len(tuple.state) == 0:
-                        tuple.set_color(red)
-                """
                 tuple.add_new_flow(column_values)
                 # Detect the first flow of the future timeslot
                 self.detect(tuple)
@@ -560,21 +527,10 @@ class Processor(multiprocessing.Process):
                                     # Inside the slot
                                     tuple4 = column_values[3]+'-'+column_values[6]+'-'+column_values[7]+'-'+column_values[2]
                                     tuple = self.get_tuple(tuple4)
-                                    self.tuples_in_this_time_slot[tuple.get_id()] = tuple
-                                    # If this is the first time the tuple appears in this time windows, put it in red
-                                    if self.verbose:
-                                        if len(tuple.state) == 0:
-                                            tuple.set_color(red)
+                                    self.tuples_in_this_time_slot[tuple.get_id()] = tuple                                
                                     tuple.add_new_flow(column_values)
-                                    """
-                                    tuple.do_print()
-                                    """
                                     # After the flow has been added to the tuple, only work with the ones having more than X amount of flows
-                                    # Check that this is working correclty comparing it to the old program
                                     if len(tuple.state) >= self.amount:
-                                        """
-                                        tuple.do_print()
-                                        """
                                         # Detection
                                         self.detect(tuple)
                                         # Ask for IpAddress object 
@@ -593,25 +549,8 @@ class Processor(multiprocessing.Process):
                         try:
                             # Process the last flows in the last time slot
                             self.process_out_of_time_slot(column_values, last_tw = True)
-                            # There was an error here that we were calling self.ip_handler.print_addresses. But we should NOT call it here. The last flow was already taken care.
                             # Print final Alerts
                             self.ip_handler.print_alerts()
-                            print "ORIGINAL per TW:\tTP: {}, FN:{}, FP:{}, TN:{}".format(TW_TP, TW_FN, TW_FP, TW_TN)
-                            TP = 0
-                            TN = 0
-                            FP =0
-                            FN = 0
-                            for ip in DETECTED_IP:
-                                if ip in INFECTED:
-                                    TP +=1
-                                else:
-                                    FP +=1
-                            for  ip in INFECTED:
-                                if ip not in DETECTED_IP and ip in ALL_IP:
-                                    FN +=1
-                            TN = len(ALL_IP) - TP - FP -FN
-
-                            print "ORIGINAL in the end:\tTP: {}, FN:{}, FP:{}, TN:{}".format(TP, FN, FP, TN)
                         except UnboundLocalError:
                             print 'Probably empty file...'
                             # Here for some reason we still miss the last flow. But since is just one i will let it go for now.
@@ -651,6 +590,7 @@ if __name__ == '__main__':
     parser.add_argument('-t', '--threshold', help='Threshold for detection with IPHandler', action='store', default=0.002, required=False, type=float)
     parser.add_argument('-W', '--whitelist', help="File with the IP addresses to whitelist. One per line.", action='store', required=False)
     parser.add_argument('-c', '--classifier', help="File where serialized classifier.", action='store',required=False, default="classifier.pickle", type=str)
+    parser.add_argument('-hr', '--history_range', help='Number of previous time winddows used ind the SDW', action='store', default=12, required=False, type=int)
 
     args = parser.parse_args()
 
@@ -705,13 +645,12 @@ if __name__ == '__main__':
 
 
     # Create the thread and start it
-    processorThread = Processor(queue, timedelta(minutes=args.width), args.datawhois, args.verbose, args.amount, args.dontdetect, args.threshold, args.debug, whitelist,args.classifier)
+    processorThread = Processor(queue, timedelta(minutes=args.width), args.datawhois, args.verbose, args.amount, args.dontdetect, args.threshold, args.debug, whitelist,args.classifier, args.history_range)
     
     #start the process
     processorThread.start()
     #register signal handler in parent process
     signal.signal(signal.SIGINT,signal_handler)
-
 
     # Just put the lines in the queue as fast as possible
     for line in sys.stdin:
@@ -722,7 +661,9 @@ if __name__ == '__main__':
     time.sleep(1)
     queue.put('stop')
 
+    #merge the processes
     processorThread.join()
 
+    #exit
     print "\nExiting Stratosphere IPS."
 
