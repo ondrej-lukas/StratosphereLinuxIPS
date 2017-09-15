@@ -444,6 +444,8 @@ class Processor(multiprocessing.Process):
             # Move the time window times
             self.slot_starttime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
             self.slot_endtime = self.slot_starttime + self.slot_width
+            #clean the dictionary with active connections
+            self.tuples_in_this_time_slot = {}
 
             # If not the last TW. Put the last flow received in the next slot, because it overcome the threshold and it was not processed
             if not last_tw:
@@ -452,7 +454,7 @@ class Processor(multiprocessing.Process):
                 tuple.add_new_flow(column_values)
                 # Detect the first flow of the future timeslot
                 self.detect(tuple)
-                self.tuples_in_this_time_slot = {}
+                self.tuples_in_this_time_slot[tuple.get_id()] = tuple 
                 flowtime = datetime.strptime(column_values[0], '%Y/%m/%d %H:%M:%S.%f')
                 # Ask for the IpAddress object for this source IP
                 ip_address = self.ip_handler.get_ip(column_values[3])
@@ -654,6 +656,7 @@ if __name__ == '__main__':
 
     # Just put the lines in the queue as fast as possible
     for line in sys.stdin:
+            #print line
             queue.put(line)
     if args.verbose > 2:
         print 'Finished receiving the input.'
