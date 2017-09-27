@@ -19,7 +19,6 @@ from os.path import isfile, join
 from ip_handler import IpHandler
 import random
 
-
 version = '0.4'
 
 INFECTED = ["147.32.84.165"]

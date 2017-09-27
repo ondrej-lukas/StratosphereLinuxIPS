@@ -1,4 +1,4 @@
-# Stratosphere Linux IPS (slips) Version 0.3.3alpha
+# Stratosphere Linux IPS (slips) Version 0.3.4
 This is the linux version of the Stratosphere IPS, a behavioral-based intrusion detection and prevention system that uses machine learning algorithms to detect malicious behaviors. It is part of a larger suite of programs that include the [Stratosphere Windows IPS] and the [Stratosphere Testing Framework].
 
 This alpha version receives flows from a ra client ([Argus] Suite) and process them using a specific algorithm. The purpose of the Alpha version is to get feedback from the community, please send us your bug reports, feature requests and ideas. See the [Stratosphere IPS Website](https://stratosphereips.org).
@@ -46,7 +46,7 @@ The core of the slips program is not only the machine learning algorithm, but mo
 The behavioral models are stored in the __models__ folder and will be updated regularly. In this version you should pull the git repository by hand to update the models.
 
 ## Features 
-This alpha version of slips comes with the following features:
+This version of slips comes with the following features:
 
 - If you execute slips without the -m parameter it will __not__ detect any behavior in the network but just print the tuples (see the Stratosphere web page for more information). So actually you can also use slips to see what is happening in your network even without detection.
 - Use -a to restrict the minimum amount of letters that the tuples had to have to be considered for detection. The default is a minimum of 3 letters which is enough for having at least one periodic letter.
@@ -94,8 +94,11 @@ This alpha version of slips comes with the following features:
 ### Roadmap
 
 ### Changelog
-
+- 0.3.4
+    - This is a mayor version change. Implementing new algorithms for analyzing the results, management of IPs, connections, whois database and more features.
+    - 
 - 0.3.3alpha
+    - First stable version with a minimal algorithm for detecting behavioral threats.
 
 
 
