@@ -386,14 +386,17 @@ class Processor(multiprocessing.Process):
         # The amount of letters requested to print minimum
         self.amount = amount
         self.queue = queue
+        
         self.tuples = {}
         self.tuples_in_this_time_slot = {}
+
         self.slot_starttime = -1
         self.slot_endtime = -1
         self.slot_width = slot_width
+        
         self.dontdetect = dontdetect
         self.ip_handler = IpHandler(self.verbose, self.debug,self.get_whois, classifier,sdw_width)
-        self.detection_threshold = threshold;
+
         self.ip_whitelist = whitelist
         #register signal for interrupting
         signal.signal(signal.SIGINT,self.handle_signal)
